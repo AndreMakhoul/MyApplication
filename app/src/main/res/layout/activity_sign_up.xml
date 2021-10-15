@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:stretchColumns="1"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvRedYellow"
+        android:text="RentoGo"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textColor="#03A9F4"
+        />
+
+    <TableRow >
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:padding="30dip"
+            android:text="Email:"
+            android:textStyle="bold"
+            />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:gravity="left"
+            android:padding="3dip"
+
+            />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tvPassWord"
+            android:padding="30dip"
+            android:text="PassWord:"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etPassWord"
+            android:gravity="left"
+            android:padding="3dip"
+             />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tvFullNmae"
+            android:padding="30dip"
+            android:text="FullName:"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etFullName"
+            android:gravity="left"
+            android:padding="3dip"
+            />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/tvDateOfBirth"
+            android:padding="30dip"
+            android:text="Date Of Birth:"
+            android:textStyle="bold" />
+
+        <EditText
+            android:hint="month, day, year"
+            android:id="@+id/etDateOfBirth"
+            android:gravity="left"
+            android:padding="3dip"
+            />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="PhoneNumber"
+            android:padding="30dip"
+            android:textStyle="bold"
+            />
+
+        <EditText
+
+            android:layout_width="wrap_content"
+            android:gravity="left"
+            android:padding="3dip" />
+    </TableRow>
+    <TableRow>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="submit"
+            android:onClick="Submit"/>
+    </TableRow>
+</TableLayout>
