@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="255dp"
         android:gravity="left|center"
         android:orientation="vertical">
 
@@ -58,21 +58,21 @@
             android:id="@+id/buttonLogIn"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="#8a5a44"
             android:onClick="login"
             android:padding="15dp"
-            android:backgroundTint="#8a5a44"
             android:text="LogIn" />
 
         <TextView
             android:id="@+id/signUpText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New user? SignUp Now"
+            android:clickable="true"
 
+            android:onClick="login"
+            android:text="New user? SignUp Now"
             android:textColor="@color/black"
             android:textSize="25dp"
-            android:clickable="true"
-            android:onClick="login"
 
             />
     </LinearLayout>
