@@ -2,7 +2,9 @@ package y2019.aoc.alaa.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class AnimationActivity extends AppCompatActivity {
+
+    private static int SPLASH_SCREEN=3500;//3.5 SECONDS
 //variable
     Animation topAnim, bottomAnim;
     ImageView logoimagie;
@@ -32,6 +36,14 @@ public class AnimationActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim);
         underlogo.setAnimation(bottomAnim);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent  = new Intent(AnimationActivity.this,MainActivity.class);
+                        startActivity(intent);
+                finish();//remove this activity from activity list
+            }
+        },SPLASH_SCREEN);
+        }
     }
 
-}

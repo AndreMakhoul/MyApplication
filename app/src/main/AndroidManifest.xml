@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".AnimationActivity"
             android:exported="true" />
         <activity
             android:name=".ArrayListActivity"
@@ -25,7 +25,7 @@
             android:name=".SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".AnimationActivity"
+            android:name=".AboutUsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

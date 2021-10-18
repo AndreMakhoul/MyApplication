@@ -15,7 +15,7 @@ public class AboutUsActivity extends AppCompatActivity {
     }
 
     public void moveToMain(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, AnimationActivity.class);
         startActivity(intent);
 
     }
