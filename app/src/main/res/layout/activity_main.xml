@@ -5,15 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-
-
-        />
 
     <TextView
         android:id="@+id/rentoGo"
@@ -69,7 +61,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
 
-            android:onClick="login"
+            android:onClick="signUp"
             android:text="New user? SignUp Now"
             android:textColor="@color/black"
             android:textSize="25dp"

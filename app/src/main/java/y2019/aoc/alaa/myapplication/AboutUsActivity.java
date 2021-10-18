@@ -19,4 +19,6 @@ public class AboutUsActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
 }
