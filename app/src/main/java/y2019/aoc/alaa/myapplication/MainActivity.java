@@ -8,55 +8,60 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener {
-    private TextView rentoGo,signUpText;
-    private EditText editTextTextEmailAddress, editTextPassword;
-    private Button buttonLogIn;
+    private TextView rentoGo,sloganName;
+    private EditText username, password;
+    private ImageView smallLogoImage;
+    private Button buttonForgetPass,go,buttonSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rentoGo = findViewById(R.id.rentoGo);
-        signUpText= findViewById(R.id.signUpText);
-        editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogIn = findViewById(R.id.buttonLogIn);
+        sloganName=findViewById(R.id.sloganName);
+        username= findViewById(R.id.username);
+        password = findViewById(R.id.Password);
+        smallLogoImage = findViewById(R.id.smallLogoImage);
+        buttonForgetPass = findViewById(R.id.buttonForgetPass);
+        go = findViewById(R.id.go);
+        buttonSignUp = findViewById(R.id.buttonSignUp);
         //sets the require button to response to long click, otherwise it wont
-        buttonLogIn.setOnLongClickListener(this);
+        go.setOnLongClickListener(this);
 
 
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
         String email= sp.getString("email","");
-        String password = sp.getString("password", "");
+        String password2 = sp.getString("password", "");
 
-        if(!email.equals("")&& !password.equals("")){
-            editTextTextEmailAddress.setText(email);
-            editTextPassword.setText(password);
+        if(!email.equals("")&& !password2.equals("")){
+            username.setText(email);
+            password.setText(password2);
         }
     }
 
     public void login(View view) {
         Intent intent = new Intent(this, ArrayListActivity.class);
-        String pass = editTextPassword.getText().toString();
+        String pass = password.getText().toString();
         String upperCaseChars = "(.*[A-Z].*)";
         String lowerCaseChars = "(.*[a-z].*)";
 
-        if (!editTextTextEmailAddress.getText().toString().equals("") && editTextTextEmailAddress.getText().toString().contains("@") && editTextTextEmailAddress.getText().toString().contains(".")) {
+        if (!username.getText().toString().equals("") && username.getText().toString().contains("@") && username.getText().toString().contains(".")) {
          //saving email and password of user in a local file for future use
             //create sp file
             SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
             //open editor for editing
             SharedPreferences.Editor editor = sp.edit();
             //write the wanted settings
-            editor.putString("email",editTextTextEmailAddress.getText().toString());
-            editor.putString("password",editTextPassword.getText().toString());
+            editor.putString("email",username.getText().toString());
+            editor.putString("password",password.getText().toString());
             //save and close file
             editor.commit();
-            intent.putExtra("email",editTextTextEmailAddress.getText().toString());
+            intent.putExtra("email",username.getText().toString());
             startActivity(intent);
 
           //  if (pass.length() >= 8 && pass.contains(upperCaseChars) ) {
@@ -81,8 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
     @Override
     public boolean onLongClick(View view) {
-        editTextTextEmailAddress.setText("");
-        editTextPassword.setText("");
+        username.setText("");
+        password.setText("");
         return true;
     }
 }
