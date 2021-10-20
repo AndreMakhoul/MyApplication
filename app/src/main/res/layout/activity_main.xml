@@ -42,41 +42,30 @@
         android:orientation="vertical"
         >
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/username"/>
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:hint="Email"
+            android:background="@drawable/custom_input"
+            android:drawablePadding="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp"
+            android:id="@+id/email"/>
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableStart="@drawable/custom_lock_icon"
+            android:hint="Password"
+            android:background="@drawable/custom_input"
+            android:drawablePadding="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp"
+            android:inputType="textPassword"
+            app:passwordToggleEnabled="true"
             android:id="@+id/Password"          />
 
-<!--       <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/username"-->
-<!--            android:hint="UserName"-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-        //toggleEnabled for the eye on the password
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/Password"-->
-<!--            android:hint="Password"-->
-<!--            app:passwordToggleEnabled="true"-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="textPassword"/>-->
-
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <Button
             android:id="@+id/buttonForgetPass"

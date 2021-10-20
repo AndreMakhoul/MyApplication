@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener {
     private TextView rentoGo,sloganName;
-    private EditText username, password;
+    private EditText email, password;
     private ImageView smallLogoImage;
     private Button buttonForgetPass,go,buttonSignUp;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         setContentView(R.layout.activity_main);
         rentoGo = findViewById(R.id.rentoGo);
         sloganName = findViewById(R.id.sloganName);
-        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
         smallLogoImage = findViewById(R.id.smallLogoImage);
         buttonForgetPass = findViewById(R.id.buttonForgetPass);
@@ -37,11 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
-        String email= sp.getString("email","");
+        String email2= sp.getString("email","");
         String password2 = sp.getString("password", "");
 
         if(!email.equals("")&& !password2.equals("")){
-            username.setText(email);
+            email.setText(email2);
             password.setText(password2);
         }
     }
@@ -52,18 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         String upperCaseChars = "(.*[A-Z].*)";
         String lowerCaseChars = "(.*[a-z].*)";
 
-        if (!username.getText().toString().equals("") && username.getText().toString().contains("@") && username.getText().toString().contains(".")) {
+        if (!email.getText().toString().equals("") && email.getText().toString().contains("@") && email.getText().toString().contains(".")) {
          //saving email and password of user in a local file for future use
             //create sp file
             SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
             //open editor for editing
             SharedPreferences.Editor editor = sp.edit();
             //write the wanted settings
-            editor.putString("email",username.getText().toString());
+            editor.putString("email",email.getText().toString());
             editor.putString("password",password.getText().toString());
             //save and close file
             editor.commit();
-            intent.putExtra("email",username.getText().toString());
+            intent.putExtra("email",email.getText().toString());
             startActivity(intent);
 
           //  if (pass.length() >= 8 && pass.contains(upperCaseChars) ) {
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
     @Override
     public boolean onLongClick(View view) {
-        username.setText("");
+        email.setText("");
         password.setText("");
         return true;
     }

@@ -6,6 +6,7 @@ import androidx.core.util.Pair;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -44,12 +45,10 @@ public class AnimationActivity extends AppCompatActivity {
                Intent intent = new Intent(AnimationActivity.this,MainActivity.class);
                Pair[] pairs = new Pair[2];
                pairs[0] = new Pair<View,String>(logoimagie,"logo_image");
-               pairs[0] = new Pair<View,String>(logo,"logo_text");
-                ActivityOptions options;//ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this, pairs);
-            //options = ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this, pairs);
+               pairs[1] = new Pair<View,String>(logo,"logo_text");
+             // ctivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this,pairs);
 
-
-            finish();//remove this activity from activity list
+finish();
 
         },SPLASH_SCREEN);
         }
