@@ -12,9 +12,8 @@
     <ImageView
         android:id="@+id/logoimagie"
         android:layout_width="match_parent"
-
+        android:transitionName="logo_image"
         android:layout_height="146dp"
-
         android:src="@drawable/logo" />
 
 
@@ -25,6 +24,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bangers"
         android:text="RentoGo"
+        android:transitionName="logo_text"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40dp" />

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,17 +21,18 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         rentoGo = findViewById(R.id.rentoGo);
-        sloganName=findViewById(R.id.sloganName);
-        username= findViewById(R.id.username);
+        sloganName = findViewById(R.id.sloganName);
+        username = findViewById(R.id.username);
         password = findViewById(R.id.Password);
         smallLogoImage = findViewById(R.id.smallLogoImage);
         buttonForgetPass = findViewById(R.id.buttonForgetPass);
         go = findViewById(R.id.go);
         buttonSignUp = findViewById(R.id.buttonSignUp);
         //sets the require button to response to long click, otherwise it wont
-        go.setOnLongClickListener(this);
+        //go.setOnLongClickListener(this);
 
 
 

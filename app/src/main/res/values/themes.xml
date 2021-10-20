@@ -15,6 +15,7 @@
     </style>
     <style name="Button.orange" parent="ThemeOverlay.AppCompat">
     <item name="colorAccent">#F4650E</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
 </resources>
