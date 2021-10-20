@@ -18,11 +18,11 @@ import android.widget.TextView;
 
 public class AnimationActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN=3500;//3.5 SECONDS
-//variable
+    private static int SPLASH_SCREEN = 3500;//3.5 SECONDS
+    //variable
     Animation topAnim, bottomAnim;
     ImageView logoimagie;
-    TextView logo,underlogo;
+    TextView logo, underlogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +30,27 @@ public class AnimationActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_animation);
         //Animation
-        topAnim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
+        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
         //id
-        logoimagie= findViewById(R.id.logoimagie);
-        logo= findViewById(R.id.logo);
-        underlogo= findViewById(R.id.underlogo);
+        logoimagie = findViewById(R.id.logoimagie);
+        logo = findViewById(R.id.logo);
+        underlogo = findViewById(R.id.underlogo);
 
         logoimagie.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
         underlogo.setAnimation(bottomAnim);
 
         new Handler().postDelayed(() -> {
-               Intent intent = new Intent(AnimationActivity.this,MainActivity.class);
-               Pair[] pairs = new Pair[2];
-               pairs[0] = new Pair<View,String>(logoimagie,"logo_image");
-               pairs[1] = new Pair<View,String>(logo,"logo_text");
-             // ctivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this,pairs);
+            Intent intent = new Intent(AnimationActivity.this, MainActivity.class);
+            Pair[] pairs = new Pair[2];
+            pairs[0] = new Pair<View, String>(logoimagie, "logo_image");
+            pairs[1] = new Pair<View, String>(logo, "logo_text");
+            // ctivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this,pairs);
+            startActivity(intent);
+            finish();
 
-finish();
-
-        },SPLASH_SCREEN);
-        }
+        }, SPLASH_SCREEN);
     }
+}
 

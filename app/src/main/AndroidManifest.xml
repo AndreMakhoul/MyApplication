@@ -19,7 +19,7 @@
             android:name=".ArrayListActivity"
             android:exported="true" />
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".IntroActivity"
@@ -28,7 +28,7 @@
             android:name=".SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AboutUsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

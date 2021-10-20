@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener {
-    private TextView rentoGo,sloganName;
+    private TextView rentoGo, sloganName;
     private EditText email, password;
     private ImageView smallLogoImage;
-    private Button buttonForgetPass,go,buttonSignUp;
+    private Button buttonForgetPass, go, buttonSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         //go.setOnLongClickListener(this);
 
 
-
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
-        String email2= sp.getString("email","");
+        String email2 = sp.getString("email", "");
         String password2 = sp.getString("password", "");
 
-        if(!email.equals("")&& !password2.equals("")){
+        if (!email.equals("") && !password2.equals("")) {
             email.setText(email2);
             password.setText(password2);
         }
@@ -53,20 +52,20 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         String lowerCaseChars = "(.*[a-z].*)";
 
         if (!email.getText().toString().equals("") && email.getText().toString().contains("@") && email.getText().toString().contains(".")) {
-         //saving email and password of user in a local file for future use
+            //saving email and password of user in a local file for future use
             //create sp file
             SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
             //open editor for editing
             SharedPreferences.Editor editor = sp.edit();
             //write the wanted settings
-            editor.putString("email",email.getText().toString());
-            editor.putString("password",password.getText().toString());
+            editor.putString("email", email.getText().toString());
+            editor.putString("password", password.getText().toString());
             //save and close file
             editor.commit();
-            intent.putExtra("email",email.getText().toString());
+            intent.putExtra("email", email.getText().toString());
             startActivity(intent);
 
-          //  if (pass.length() >= 8 && pass.contains(upperCaseChars) ) {
+            //  if (pass.length() >= 8 && pass.contains(upperCaseChars) ) {
 
             {
                 //intent.putExtra("email", editTextTextEmailAddress.getText().toString());
