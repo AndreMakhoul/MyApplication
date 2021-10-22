@@ -23,7 +23,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        submitButton= findViewById(R.id.submitButton);
+        submitButton = findViewById(R.id.submitButton);
         etDateOfBirth = findViewById(R.id.etDateOfBirth);
         etDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         mOnDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-               String date= "month/day/year: "+month+"/"+day+"/"+year;
+                String date = "month/day/year: " + month + "/" + day + "/" + year;
                 etDateOfBirth.setText(date);
             }
         };
