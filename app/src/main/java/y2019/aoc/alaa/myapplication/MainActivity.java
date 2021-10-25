@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         rentoGo = findViewById(R.id.rentoGo);
         sloganName = findViewById(R.id.sloganName);
         email = findViewById(R.id.email);
