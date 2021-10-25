@@ -13,7 +13,7 @@
         android:id="@+id/smallLogoImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logoi"
         android:transitionName="logo_image" />
 
     <TextView

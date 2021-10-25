@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:transitionName="logo_image"
         android:layout_height="146dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logoi" />
 
 
 
@@ -29,14 +29,15 @@
         android:textColor="@color/white"
         android:textSize="40dp" />
 
-    <TextView
-        android:id="@+id/underlogo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bangers"
-        android:text="Nation Wide Car Rental App"
-        android:textColor="@color/white"
-        android:textSize="40dp" />
+
+        <TextView
+            android:id="@+id/underlogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bangers"
+            android:text="Nation Wide Car Rental App"
+            android:textColor="@color/white"
+            android:textSize="40dp" />
 
 
 </LinearLayout>
