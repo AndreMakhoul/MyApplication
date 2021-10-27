@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
-
     <ImageView
         android:id="@+id/smallLogoImage"
         android:layout_width="150dp"
@@ -52,6 +51,7 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:textSize="18sp" />
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
@@ -68,7 +68,6 @@
             android:drawablePadding="12dp"
             android:hint="Password"
             android:inputType="textPassword"
-
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:textSize="18sp"
