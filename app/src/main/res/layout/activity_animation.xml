@@ -37,6 +37,8 @@
             android:fontFamily="@font/bangers"
             android:text="Nation Wide Car Rental App"
             android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textStyle="italic"
             android:textSize="40dp" />
 
 

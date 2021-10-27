@@ -1,5 +1,6 @@
 package y2019.aoc.alaa.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
@@ -8,23 +9,35 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener {
+    private static final String TAG = "FIREBASE";
     private TextView rentoGo, sloganName;
     private EditText email, password;
     private ImageView smallLogoImage;
     private Button buttonForgetPass, go, buttonSignUp;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // returns a reference to the instance of the project fire base.
+        mAuth = FirebaseAuth.getInstance();
         rentoGo = findViewById(R.id.rentoGo);
         sloganName = findViewById(R.id.sloganName);
         email = findViewById(R.id.email);
@@ -57,25 +70,24 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             //saving email and password of user in a local file for future use
             //create sp file
             SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
+
             //open editor for editing
             SharedPreferences.Editor editor = sp.edit();
+
             //write the wanted settings
             editor.putString("email", email.getText().toString());
             editor.putString("password", password.getText().toString());
+
             //save and close file
             editor.commit();
             intent.putExtra("email", email.getText().toString());
-            startActivity(intent);
 
-            //  if (pass.length() >= 8 && pass.contains(upperCaseChars) ) {
+            login(email.getText().toString(),password.getText().toString());
 
-            {
-                //intent.putExtra("email", editTextTextEmailAddress.getText().toString());
+           // startActivity(intent);
 
-            }
-            //}
         }
-        startActivity(intent);
+        // startActivity(intent);
 
         //   Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
 
@@ -93,4 +105,28 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         password.setText("");
         return true;
     }
+
+ public void login(String email, String password){
+     mAuth.signInWithEmailAndPassword(email, password)
+             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                 @Override
+                 public void onComplete(@NonNull Task<AuthResult> task) {
+                     if (task.isSuccessful()) {
+                         // Sign in success, update UI with the signed-in user's information
+                         Log.d(TAG, "signInWithEmail:success");
+                         FirebaseUser user = mAuth.getCurrentUser();
+                         Intent i = new Intent(MainActivity.this, ArrayListActivity.class);
+                         startActivity(i);
+                     } else {
+                         // If sign in fails, display a message to the user.
+                         Log.w(TAG, "signInWithEmail:failure", task.getException());
+                         Toast.makeText(MainActivity.this, "Authentication failed.",
+                                 Toast.LENGTH_SHORT).show();
+                     }
+
+                     // ...
+                 }
+             });
+ }
+
 }
