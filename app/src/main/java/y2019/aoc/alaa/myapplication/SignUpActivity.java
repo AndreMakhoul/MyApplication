@@ -23,8 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Calendar;
 
-public class SignUpActivity extends AppCompatActivity {
-    private static final String TAG = "FIREBASE";
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "andre";
 
     private Button submitButton;
     private EditText etDateOfBirth, etEmail,etPassWord;
@@ -40,6 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassWord = findViewById(R.id.etPassWord);
         submitButton = findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(this);
         etDateOfBirth = findViewById(R.id.etDateOfBirth);
         etDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,11 +69,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    public void Submit(View view) {
-     signup(etEmail.getText().toString(), etPassWord.getText().toString() );
-    }
 
     public void signup(String email, String password){
+
         mAuth.createUserWithEmailAndPassword(email, password)//instance of the firebase.
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -95,4 +94,8 @@ public class SignUpActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onClick(View view) {
+        signup(etEmail.getText().toString(), etPassWord.getText().toString() );
+    }
 }
