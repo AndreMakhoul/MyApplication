@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,23 +28,34 @@ import java.util.Calendar;
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "andre";
 
-    private Button submitButton;
-    private EditText etDateOfBirth, etEmail,etPassWord;
+    private Button submitButton,buttonSignIn;
+    private EditText  etEmail,etPassWord,etFullName,etPhoneNumber;
     private DatePickerDialog.OnDateSetListener mOnDateSetListener;
     private FirebaseAuth mAuth;
+
+    private ImageView suSmallLogoImage;
+    private TextView suRentoGo,suSloganName,tvDateOfBirth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        suRentoGo=findViewById(R.id.suRentoGo);
+        suSloganName=findViewById(R.id.suSloganName);
+        suSmallLogoImage=findViewById(R.id.suSmallLogoImage);
         //Initialize Firebase Auth.
         mAuth = FirebaseAuth.getInstance();//gets the instance of the firebase connected to the project.
         etEmail = findViewById(R.id.etEmail);
         etPassWord = findViewById(R.id.etPassWord);
+        etPhoneNumber=findViewById(R.id.etPhoneNumber);
+        etFullName=findViewById(R.id.etFullName);
         submitButton = findViewById(R.id.submitButton);
         submitButton.setOnClickListener(this);
-        etDateOfBirth = findViewById(R.id.etDateOfBirth);
-        etDateOfBirth.setOnClickListener(new View.OnClickListener() {
+        buttonSignIn=findViewById(R.id.buttonSignIn);
+
+        tvDateOfBirth = findViewById(R.id.tvDateOfBirth);
+        tvDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
@@ -63,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 String date = "month/day/year: " + month + "/" + day + "/" + year;
-                etDateOfBirth.setText(date);
+                tvDateOfBirth.setText(date);
             }
         };
 
@@ -93,7 +106,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
     }
-
+    public void ToMain(View view)
+    {
+        Intent intent = new Intent (SignUpActivity.this,MainActivity.class);
+                startActivity(intent);
+    }
     @Override
     public void onClick(View view) {
         signup(etEmail.getText().toString(), etPassWord.getText().toString() );

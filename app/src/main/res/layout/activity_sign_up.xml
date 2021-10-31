@@ -1,124 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:stretchColumns="1"
+    android:padding="20dp"
+    android:background="#fff"
     >
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvRedYellow"
-        android:text="RentoGo"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:fontFamily="@font/bungee"
-        android:textColor="@color/black"
+    <ImageView
+        android:id="@+id/suSmallLogoImage"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logoi"
         />
 
-    <TableRow >
+    <TextView
+        android:id="@+id/suRentoGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
+        android:text="RentoGo"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
 
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="17dp"
-            android:padding="25dip"
-            android:text="Email:"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/suSloganName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up to continue"
+        android:textSize="18sp" />
 
-        <EditText
-            android:id="@+id/etEmail"
-            android:gravity="left"
-
-            android:background="@drawable/custom_input"
-            />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/tvPassWord"
-            android:padding="30dip"
-            android:text="PassWord:"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
-
-        <EditText
-            android:id="@+id/etPassWord"
-            android:gravity="left"
-            android:padding="3dip"
-            android:background="@drawable/custom_input"
-
-            />
-    </TableRow>
-
-    <TableRow>
-
-        <TextView
-            android:id="@+id/tvFullNmae"
-            android:padding="30dip"
-            android:text="FullName:"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/etFullName"
-            android:gravity="left"
-            android:padding="3dip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableStart="@drawable/custom_face_icon"
+
             android:background="@drawable/custom_input"
-
+            android:drawablePadding="12dp"
+            android:hint="FullName"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp"
             />
-    </TableRow>
 
-    <TableRow>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            />
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email_icon"
+            android:drawablePadding="12dp"
+            android:hint="Email"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <EditText
+            android:id="@+id/etPassWord"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_lock_icon"
+            android:drawablePadding="12dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp"
+            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
+            />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            />
 
         <TextView
             android:id="@+id/tvDateOfBirth"
-            android:padding="30dip"
-            android:text="Date Of Birth:"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            />
-
-        <EditText
-            android:hint="month, day, year"
-            android:id="@+id/etDateOfBirth"
-            android:gravity="left"
-            android:padding="3dip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center|left"
+            android:hint="Dath of Birth: Month, Day, Year"
+            android:drawableStart="@drawable/custom_calendar_icon"
             android:background="@drawable/custom_input"
-
-            />
-    </TableRow>
-
-    <TableRow>
-        <TextView
-            android:text="PhoneNumber:"
-            android:padding="30dip"
-            android:textStyle="bold"
-            android:textSize="20dp"
+            android:drawablePadding="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp"
             />
 
-        <EditText
-
+        <View
             android:layout_width="wrap_content"
-            android:gravity="left"
-            android:padding="3dip"
-            android:background="@drawable/custom_input"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
             />
-    </TableRow>
-    <TableRow>
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Phone Number"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_contact_phone"
+            android:drawablePadding="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="18sp"
+            />
 
         <Button
             android:id="@+id/submitButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="submit"
-            />
-    </TableRow>
-</TableLayout>
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#000"
+            android:onClick="login"
+            android:text="Sumbit"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:background="#00000000"
+            android:elevation="0dp"
+            android:onClick="ToMain"
+            android:text="Have an Account? SignIn"
+            android:textColor="#000" />
+    </LinearLayout>
+</LinearLayout>
