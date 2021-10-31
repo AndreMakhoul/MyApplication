@@ -28,8 +28,8 @@ public class IntroActivity extends AppCompatActivity implements DialogInterface.
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.settings:
-                Toast.makeText(IntroActivity.this, "Settings", Toast.LENGTH_LONG).show();
+            case R.id.camera:
+                Toast.makeText(IntroActivity.this, "Camera", Toast.LENGTH_LONG).show();
                 break;
             case R.id.exit:
                 finish();

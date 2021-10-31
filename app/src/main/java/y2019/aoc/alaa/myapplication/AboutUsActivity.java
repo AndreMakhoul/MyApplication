@@ -29,8 +29,10 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.settings:
-                Toast.makeText(AboutUsActivity.this, "Settings", Toast.LENGTH_LONG).show();
+            case R.id.camera:
+                Toast.makeText(AboutUsActivity.this, "Camera", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(AboutUsActivity.this,ProfileActivity.class);
+                startActivity(intent);
                 break;
             case R.id.exit:
                 finish();
