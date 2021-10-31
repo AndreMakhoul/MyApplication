@@ -89,7 +89,7 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:textSize="18sp"
-            android:drawableEnd="@drawable/ic_baseline_remove_red_eye_24"
+            android:drawableEnd="@drawable/custom_eye"
             />
 
         <View
