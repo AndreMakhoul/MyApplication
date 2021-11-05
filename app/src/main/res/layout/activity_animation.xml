@@ -39,7 +39,6 @@
             android:textColor="@color/white"
             android:textAlignment="center"
             android:textStyle="italic"
-            android:textSize="40dp" />
-
+            android:textSize="38dp" />
 
 </LinearLayout>

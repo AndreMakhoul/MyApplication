@@ -26,8 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Calendar;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "andre";
-
+    private static final String TAG = "FIREBASE";
     private Button submitButton,buttonSignIn;
     private EditText  etEmail,etPassWord,etFullName,etPhoneNumber;
     private DatePickerDialog.OnDateSetListener mOnDateSetListener;
