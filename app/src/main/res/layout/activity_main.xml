@@ -72,7 +72,8 @@
             android:paddingEnd="12dp"
             android:textSize="18sp"
             android:drawableEnd="@drawable/custom_eye"
-            app:passwordToggleEnabled="true" />
+
+            />
 
 
         <Button
