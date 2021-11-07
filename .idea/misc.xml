@@ -41,8 +41,16 @@
         <entry key="..\:/Users/97250/Desktop/MyApplication2/app/src/main/res/menu/menu.xml" value="0.1796875" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/custom_eye.xml" value="0.13518518518518519" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/custom_lock_icon.xml" value="0.13518518518518519" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_baseline_hovered_red_eye_24.xml" value="0.125" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_baseline_remove_red_eye_24.xml" value="0.125" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_baseline_remove_red_eye_focused.xml" value="0.125" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_baseline_unselected_red_eye_24.xml" value="0.125" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_email_focused.xml" value="0.125" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/activity_about_us.xml" value="0.1" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/activity_animation.xml" value="0.1" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/activity_array_list.xml" value="0.1" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/car_row.xml" value="0.1" />
       </map>
     </option>
   </component>
