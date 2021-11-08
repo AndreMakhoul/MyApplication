@@ -3,16 +3,11 @@ package y2019.aoc.alaa.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -49,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         buttonSignUp = findViewById(R.id.buttonSignUp);
         //sets the require button to response to long click, otherwise it wont
         //go.setOnLongClickListener(this);
+
+
 
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
@@ -107,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         return true;
     }
 
+
+
  public void login(String email, String password){
      mAuth.signInWithEmailAndPassword(email, password)
              .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -129,5 +128,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
                  }
              });
  }
+
+
+
 
 }
