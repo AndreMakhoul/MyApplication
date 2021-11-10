@@ -2,7 +2,6 @@ package y2019.aoc.alaa.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -11,6 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -45,8 +45,12 @@ public class AnimationActivity extends AppCompatActivity {
 
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(AnimationActivity.this, MainActivity.class);
-          startActivity(intent);
-          finish();
+
+            Pair [] pairs = new Pair[2];
+            pairs[0] = new Pair<View,String>(logoimagie, "logo_image");
+            pairs[1] = new Pair<View,String>(logo, "logo_text");
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this, pairs);
+            startActivity(intent,options.toBundle());//will carry our animation (bundle);
 
         }, SPLASH_SCREEN);
     }
