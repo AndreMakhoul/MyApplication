@@ -20,7 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements View.OnLongClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnLongClickListener //implements ממשק onLongClickListener (Long Click) onLongClick.
+{
     private static final String TAG = "FIREBASE";
     private TextView rentoGo, sloganName;
     private EditText email, password;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // returns a reference to the instance of the project fire base.
+        // returns a reference to the instance of the project firebase (console) and connect it to the project.
         mAuth = FirebaseAuth.getInstance();
         rentoGo = findViewById(R.id.rentoGo);
         sloganName = findViewById(R.id.sloganName);
@@ -42,8 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         buttonForgetPass = findViewById(R.id.buttonForgetPass);
         go = findViewById(R.id.go);
         buttonSignUp = findViewById(R.id.buttonSignUp);
+
         //sets the require button to response to long click, otherwise it wont
-        //go.setOnLongClickListener(this);
+        go.setOnLongClickListener(this);
 
 
 
@@ -73,11 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             SharedPreferences.Editor editor = sp.edit();
 
             //write the wanted settings
-            editor.putString("email", email.getText().toString());
-            editor.putString("password", password.getText().toString());
+            editor.putString("email", email.getText().toString());//keyword , email what the user put.
+            editor.putString("password", password.getText().toString());//keyword, password what the user put.
 
             //save and close file
             editor.commit();
+
             intent.putExtra("email", email.getText().toString());
 
             login(email.getText().toString(),password.getText().toString());

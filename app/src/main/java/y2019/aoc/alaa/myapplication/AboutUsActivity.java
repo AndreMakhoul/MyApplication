@@ -22,13 +22,14 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);//inflate put the menu on the screen above
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId()) // switch checks the id then go to the case that related to it
+        {
             case R.id.camera:
                 Toast.makeText(AboutUsActivity.this, "Camera", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(AboutUsActivity.this,ProfileActivity.class);
@@ -36,7 +37,7 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
                 break;
             case R.id.exit:
                 finish();
-                break;
+                break;//close application.
         }
         return super.onOptionsItemSelected(item);
     }
@@ -58,11 +59,12 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
         }
     }
 
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    public void onBackPressed() //method from implement DialogInterface.OnClickListener
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this); // create the dialog(builder).
         builder.setMessage("Are you sure?");
         //cancel not showing in the dialog
-        builder.setCancelable(false);
+        builder.setCancelable(false); //no cancel on screen
         builder.setPositiveButton("YES", this);
         builder.setNegativeButton("NO", this);
         //creating it
