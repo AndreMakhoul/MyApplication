@@ -22,11 +22,19 @@ public class CustomAdapter extends ArrayAdapter<Item> {
     private Context context;//view what i want to show on screen.
     private int resource;// id for xml how will the info will be ordered.
 
+
+
     public CustomAdapter(@NonNull Context context, int resource, @NonNull List<Item> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;//this is the item row resource, design for each row.
     }
+
+
+
+
+
+
     /*
     getView() method. This view is called when a listItem needs to be created and
     populated with the data.In this method first the View is inflated using the
@@ -48,6 +56,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
             ImageView imageView = view.findViewById(R.id.imageItem);
             TextView textViewDescription = view.findViewById(R.id.textviewDesc);
             Button itemButton = view.findViewById(R.id.itemButton);
+
             itemButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -58,6 +67,8 @@ public class CustomAdapter extends ArrayAdapter<Item> {
             textViewDescription.setText(item.getDescription());
 
 
+           // Animation animation = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+            //convertView.startAnimation(animation);
         }
 
 
