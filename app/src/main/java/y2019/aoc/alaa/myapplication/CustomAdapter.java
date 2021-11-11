@@ -60,7 +60,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
             itemButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "this Item was added to shopping cart", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "This Item was Added to Shopping Cart", Toast.LENGTH_LONG).show();
                 }
             });
             imageView.setImageResource(item.getResid());
