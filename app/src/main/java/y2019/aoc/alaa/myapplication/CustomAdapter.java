@@ -47,7 +47,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
 
-        if (view == null)//to make share it wont crash.
+        if (view == null)//to make sure it wont crash.
             view = LayoutInflater.from(context).inflate(resource, parent, false);
 
         Item item = getItem(position);//starts at first place 0. method from android studio not related to Item object.
