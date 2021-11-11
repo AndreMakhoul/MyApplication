@@ -29,15 +29,6 @@ public class ArrayListActivity extends AppCompatActivity{
         list.add(new Item("this is my first Item", R.drawable.audi, true, 50));
         list.add(new Item("this is my second Item", R.drawable.car, true, 50));
         list.add(new Item("this is my third Item", R.drawable.whiteaudi, false, 70));
-        list.add(new Item("this is my first Item", R.drawable.audi, true, 50));
-        list.add(new Item("this is my second Item", R.drawable.car, true, 50));
-        list.add(new Item("this is my third Item", R.drawable.whiteaudi, false, 70));
-        list.add(new Item("this is my first Item", R.drawable.audi, true, 50));
-        list.add(new Item("this is my second Item", R.drawable.car, true, 50));
-        list.add(new Item("this is my third Item", R.drawable.whiteaudi, false, 70));
-        list.add(new Item("this is my first Item", R.drawable.audi, true, 50));
-        list.add(new Item("this is my second Item", R.drawable.car, true, 50));
-        list.add(new Item("this is my third Item", R.drawable.whiteaudi, false, 70));
 
         //reference to the list view so it can programed
         myListView = findViewById(R.id.myListView);

@@ -24,7 +24,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button buttonCamera, buttonGallery;
     private ImageView imageViewProfile;
 
-    //for picture og camera
+    //for picture of camera, A bitmap is a type of memory organization or image file format used to store digital images.
+    //The term bitmap comes from the computer programming terminology, meaning just a map of bits,
+    //a spatially mapped array of bits.
     private Bitmap picture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +47,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         if(view.getId()==R.id.buttonCamera){
             Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(i,CAMERA_REQUEST);
+            startActivityForResult(i,CAMERA_REQUEST); // this startActivity takes the intent and the camera_request.
         }else{
-            Intent i = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(i,GALLERY_REQUEST);
+            Intent i = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI); // chooses a photo from gallery.
+            startActivityForResult(i,GALLERY_REQUEST);  // this startActivity takes the intent and the gallery_request.
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //if the request was from camera and the result was OK meaning the camera worked
         if(requestCode==CAMERA_REQUEST){
             if(resultCode == RESULT_OK){
                 //the image captured is saved in the data object
@@ -64,9 +67,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             }
         }else{
             if(resultCode==RESULT_OK){
+                //URI - unified resource locator is something like URL but can hold different type of paths
+                // examples: file:///something.txt, http://www.example.com/, ftp://example.com
+                // A Uri object is usually used to tell a ContentProvider what we want to access by reference
                 Uri targetUri=data.getData();
                 try {
-                    //decode an input stream into a bitmap.
+                    //decode an input stream URI into a bitmap.
+                    //openInputStream, Opens a stream on to the content associated with a content URI. If there is no data associated with the URI, FileNotFoundException is thrown
+                    // inputStream is A readable source of bytes. Most clients will use input streams that read data from the file system.
+                    //ContentResolver is something we use to be able to reach ContentProvider as a client/user in order to connect with provider.
                     picture= BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
                     imageViewProfile.setImageBitmap(picture);
                 } catch (FileNotFoundException e){

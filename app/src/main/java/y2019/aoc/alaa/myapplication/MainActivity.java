@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
 
 
-        SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE);
-        String email2 = sp.getString("email", "");
-        String password2 = sp.getString("password", "");
+        SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE); // creates a localFile which saves the SharedPreferences.
+        String email2 = sp.getString("email", ""); // saves the email in the local file
+        String password2 = sp.getString("password", "");//save the password in the local file.
 
         if (!email.equals("") && !password2.equals("")) {
             email.setText(email2);
@@ -88,16 +88,35 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
             intent.putExtra("email", email.getText().toString());
 
             login(email.getText().toString(),password.getText().toString());
-
-           // startActivity(intent);
-
         }
-        // startActivity(intent);
-
-        //   Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
-
-
     }
+
+
+
+ public void login(String email, String password){
+     mAuth.signInWithEmailAndPassword(email, password) //instance of the firebase.
+             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+             {
+                 @Override
+                 public void onComplete(@NonNull Task<AuthResult> task)//onComplete method waits for the firebase to finish his job then it gives us the result.
+                 {
+                     if (task.isSuccessful()) {
+                         // Sign in success, update UI with the signed-in user's information
+                         Log.d(TAG, "signInWithEmail:success");
+                         FirebaseUser user = mAuth.getCurrentUser();
+                         Intent i = new Intent(MainActivity.this, ArrayListActivity.class);
+                         startActivity(i);
+                     } else {
+                         // If sign in fails, display a message to the user.
+                         Log.w(TAG, "signInWithEmail:failure", task.getException()); //getException has description for why the information email or password are wrong.
+                         Toast.makeText(MainActivity.this, "Authentication failed.",
+                                 Toast.LENGTH_SHORT).show();
+                     }
+
+                     // ...
+                 }
+             });
+ }
 
     public void signUp(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
@@ -110,32 +129,6 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         password.setText("");
         return true;
     }
-
-
-
- public void login(String email, String password){
-     mAuth.signInWithEmailAndPassword(email, password)
-             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                 @Override
-                 public void onComplete(@NonNull Task<AuthResult> task) {
-                     if (task.isSuccessful()) {
-                         // Sign in success, update UI with the signed-in user's information
-                         Log.d(TAG, "signInWithEmail:success");
-                         FirebaseUser user = mAuth.getCurrentUser();
-                         Intent i = new Intent(MainActivity.this, ArrayListActivity.class);
-                         startActivity(i);
-                     } else {
-                         // If sign in fails, display a message to the user.
-                         Log.w(TAG, "signInWithEmail:failure", task.getException());
-                         Toast.makeText(MainActivity.this, "Authentication failed.",
-                                 Toast.LENGTH_SHORT).show();
-                     }
-
-                     // ...
-                 }
-             });
- }
-
 
 
 

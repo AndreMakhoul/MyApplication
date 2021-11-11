@@ -67,8 +67,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
             textViewDescription.setText(item.getDescription());
 
 
-           // Animation animation = AnimationUtils.loadAnimation(context, R.anim.fade_in);
-            //convertView.startAnimation(animation);
+
         }
 
 
