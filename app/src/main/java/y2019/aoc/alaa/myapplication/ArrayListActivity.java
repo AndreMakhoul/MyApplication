@@ -26,9 +26,9 @@ public class ArrayListActivity extends AppCompatActivity{
         setContentView(R.layout.activity_array_list);
         list = new ArrayList<>();
 
-        list.add(new Item("this is my first Item", R.drawable.audi, true, 50));
-        list.add(new Item("this is my second Item", R.drawable.car, true, 50));
-        list.add(new Item("this is my third Item", R.drawable.whiteaudi, false, 70));
+        list.add(new Item("Audi A7", R.drawable.audi, true, 50));
+        list.add(new Item("Porsche GT2 RS", R.drawable.car, true, 50));
+        list.add(new Item("Audi R8", R.drawable.whiteaudi, false, 70));
 
         //reference to the list view so it can programed
         myListView = findViewById(R.id.myListView);

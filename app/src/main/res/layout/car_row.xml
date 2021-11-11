@@ -13,15 +13,16 @@
 
         <ImageView
             android:id="@+id/imageItem"
-            android:layout_width="103dp"
+            android:layout_width="100dp"
             android:layout_height="150dp"
             android:src="@drawable/audi" />
 
         <TextView
             android:id="@+id/textviewDesc"
             android:layout_width="186dp"
-            android:layout_height="52dp"
+            android:layout_height="25dp"
             android:text="description"
+            android:fontFamily="@font/antic"
             android:textSize="24sp" />
 
         <Button
