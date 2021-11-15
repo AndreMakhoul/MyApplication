@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE); // creates a localFile which saves the SharedPreferences.
-        String email2 = sp.getString("email", ""); // saves the email in the local file
-        String password2 = sp.getString("password", "");//save the password in the local file.
+        String email2 = sp.getString("email", "");
+        String password2 = sp.getString("password", "");
 
         if (!email.equals("") && !password2.equals("")) {
             email.setText(email2);

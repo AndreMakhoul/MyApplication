@@ -32,7 +32,7 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
         {
             case R.id.camera:
                 Toast.makeText(AboutUsActivity.this, "Camera", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(AboutUsActivity.this,ProfileActivity.class);
+                Intent intent = new Intent(AboutUsActivity.this, ProfileActivity.class);
                 startActivity(intent);
                 break;
             case R.id.exit:
