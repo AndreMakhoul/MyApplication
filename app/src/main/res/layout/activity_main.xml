@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
+
     <ImageView
         android:id="@+id/smallLogoImage"
         android:layout_width="150dp"
@@ -31,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign In to continue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:transitionName="logo_desc" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,13 +52,14 @@
             android:hint="Email"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+
+            android:transitionName="email_tran" />
 
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            />
+            android:layout_marginTop="10dp" />
 
 
         <EditText
@@ -64,16 +67,17 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/custom_input"
+            android:contentDescription="15"
             android:drawableStart="@drawable/custom_lock_icon"
+            android:drawableEnd="@drawable/custom_eye"
             android:drawablePadding="12dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:textSize="18sp"
-            android:drawableEnd="@drawable/custom_eye"
 
-            />
+            android:transitionName="password_tran" />
 
 
         <Button
@@ -96,7 +100,8 @@
             android:backgroundTint="#000"
             android:onClick="login"
             android:text="GO"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:transitionName="button_tran" />
 
         <Button
             android:id="@+id/buttonSignUp"
@@ -108,7 +113,8 @@
             android:elevation="0dp"
             android:onClick="signUp"
             android:text="New User? Sign Up"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:transitionName="login_signup_tran" />
 
     </LinearLayout>
 

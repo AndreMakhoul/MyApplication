@@ -3,12 +3,14 @@ package y2019.aoc.alaa.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -40,6 +42,25 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        buttonSignIn = findViewById(R.id.buttonSignIn);
+        buttonSignIn.setOnClickListener((view) -> {
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+
+            Pair[] pairs = new Pair[6];
+            pairs[0] = new Pair<View,String>(suRentoGo,"logo_text");
+            pairs[1] = new Pair<View,String>(suSloganName,"logo_desc");
+            pairs[2] = new Pair<View,String>(etEmail,"email_tran");
+            pairs[3] = new Pair<View,String>(etPassWord,"password_tran");
+            pairs[4] = new Pair<View,String>(submitButton,"button_tran");
+            pairs[5] = new Pair<View,String>(buttonSignIn,"login_signup_tran");
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUpActivity.this,pairs);
+            startActivity(intent, options.toBundle());//to bundle carry the animation.
+        } );
+
+
+
         suRentoGo=findViewById(R.id.suRentoGo);
         suSloganName=findViewById(R.id.suSloganName);
         suSmallLogoImage=findViewById(R.id.suSmallLogoImage);
@@ -51,7 +72,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         etFullName=findViewById(R.id.etFullName);
         submitButton = findViewById(R.id.submitButton);
         submitButton.setOnClickListener(this);
-        buttonSignIn=findViewById(R.id.buttonSignIn);
 
         tvDateOfBirth = findViewById(R.id.tvDateOfBirth);
         tvDateOfBirth.setOnClickListener(new View.OnClickListener() {

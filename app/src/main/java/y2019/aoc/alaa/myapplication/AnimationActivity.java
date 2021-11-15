@@ -1,13 +1,9 @@
 package y2019.aoc.alaa.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
@@ -22,7 +18,7 @@ public class AnimationActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 4000;//4 SECONDS
     //variable
-    Animation topAnim, bottomAnim;
+    Animation topAnim,middleAnim, bottomAnim;
     ImageView logoimagie;
     TextView logo, underlogo;
 
@@ -33,6 +29,7 @@ public class AnimationActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //Animation
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        middleAnim = AnimationUtils.loadAnimation(this, R.anim.middle_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
         //id
         logoimagie = findViewById(R.id.logoimagie);
@@ -40,7 +37,7 @@ public class AnimationActivity extends AppCompatActivity {
         underlogo = findViewById(R.id.underlogo);
 
         logoimagie.setAnimation(topAnim);
-        logo.setAnimation(bottomAnim);
+        logo.setAnimation(middleAnim);
         underlogo.setAnimation(bottomAnim);
 
         new Handler().postDelayed(() -> {

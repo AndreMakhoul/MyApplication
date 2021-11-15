@@ -3,10 +3,12 @@ package y2019.aoc.alaa.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,6 +38,26 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        buttonSignUp = findViewById(R.id.buttonSignUp);
+        buttonSignUp.setOnClickListener((view) -> {
+            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+
+            Pair [] pairs = new Pair[6];
+            pairs[0] = new Pair<View,String>(rentoGo,"logo_text");
+            pairs[1] = new Pair<View,String>(sloganName,"logo_desc");
+            pairs[2] = new Pair<View,String>(email,"email_tran");
+            pairs[3] = new Pair<View,String>(password,"password_tran");
+            pairs[4] = new Pair<View,String>(go,"button_tran");
+            pairs[5] = new Pair<View,String>(buttonSignUp,"login_signup_tran");
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+            startActivity(intent, options.toBundle());//to bundle carry the animation.
+        } );
+
+
+
+
+
 
         // returns a reference to the instance of the project firebase (console) and connect it to the project.
         mAuth = FirebaseAuth.getInstance();
@@ -46,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         smallLogoImage = findViewById(R.id.smallLogoImage);
         buttonForgetPass = findViewById(R.id.buttonForgetPass);
         go = findViewById(R.id.go);
-        buttonSignUp = findViewById(R.id.buttonSignUp);
 
         //sets the require button to response to long click, otherwise it wont
         go.setOnLongClickListener(this);

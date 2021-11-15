@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    1. duration: the time of the animation in milliSeconds.-->
+
+    <!--    2.fromXDelta: Float or percentage. Starting X offset.-->
+    <!--    Expressed either: in pixels relative to the normal position (such as "5"), -->
+    <!--    in percentage relative to the element width (such as "5%"), -->
+    <!--    or in percentage relative to the parent width (such as "5%p").-->
+    <!--    -->
+    <!--    3.fromYDelta: Float or percentage. Starting Y offset. -->
+    <!--    Expressed either: in pixels relative to the normal position (such as "5"), -->
+    <!--    in percentage relative to the element height (such as "5%"), -->
+    <!--    or in percentage relative to the parent height (such as "5%p").-->
+
+    <translate
+        android:duration="1500"
+        android:fromXDelta="50%"
+        android:fromYDelta="0%" />
+
+    <!--    fromAlpha: Float. Starting opacity offset, where 0.0 is transparent and 1.0 is opaque.-->
+    <!--    toAlpha: Float. Ending opacity offset, where 0.0 is transparent and 1.0 is opaque.-->
+
+    <alpha
+        android:duration="1500"
+        android:fromAlpha="0.1"
+        android:toAlpha="1.0" />
+</set>
