@@ -21,6 +21,7 @@ public class AnimationActivity extends AppCompatActivity {
     Animation topAnim,middleAnim, bottomAnim;
     ImageView logoimagie;
     TextView logo, underlogo;
+    private Intent musicIntent;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,10 @@ public class AnimationActivity extends AppCompatActivity {
             startActivity(intent,options.toBundle());//will carry our animation (bundle);
 
         }, SPLASH_SCREEN);
+       // this will start the service which in turn will the music.
+        musicIntent = new Intent(this, MusicService.class);// connect the activity with service in order to run the service.
+        startService(musicIntent);
+
     }
 
 }
