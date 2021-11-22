@@ -37,7 +37,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".myService"></service>
 
         <meta-data
             android:name="preloaded_fonts"
