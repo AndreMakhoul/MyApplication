@@ -37,7 +37,13 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
                 break;
             case R.id.exit:
                 finish();
+            case R.id.profile:
+                Intent intent1 = new Intent(AboutUsActivity.this, UserProfile.class);
+                startActivity(intent1);
+
                 break;//close application.
+
+
         }
         return super.onOptionsItemSelected(item);
     }
