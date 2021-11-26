@@ -27,7 +27,7 @@ public class ArrayListActivity extends AppCompatActivity{
         list = new ArrayList<>();
 
         list.add(new Item("Audi A7", R.drawable.audi, "2016", "50₪"));
-        list.add(new Item("Porsche GT2 RS", R.drawable.amg, "2018", "50₪"));
+        list.add(new Item("Porsche GT2 RS", R.drawable.whiteaudi, "2018", "50₪"));
         list.add(new Item("Audi R8", R.drawable.whiteaudi, "2020", "70₪"));
 
         //reference to the list view so it can programed
