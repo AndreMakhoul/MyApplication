@@ -3,13 +3,13 @@ package y2019.aoc.alaa.myapplication;
 public class Item {
     private String description;
     private int resid;//image id to be loaded
-    private boolean isHappy;
-    private int amount;
+    private String yearpre;
+    private String amount;
 
-    public Item(String description, int resid, boolean isHappy, int amount) {
+    public Item(String description, int resid, String yearpre, String amount) {
         this.description = description;
         this.resid = resid;
-        this.isHappy = isHappy;
+        this.yearpre = yearpre;
         this.amount = amount;
     }
 
@@ -21,11 +21,11 @@ public class Item {
         return resid;
     }
 
-    public boolean isHappy() {
-        return isHappy;
+    public String getYearpre() {
+        return yearpre;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 
@@ -37,11 +37,11 @@ public class Item {
         this.resid = resid;
     }
 
-    public void setHappy(boolean happy) {
-        isHappy = happy;
+    public void setYearpre(String yearpre) {
+        yearpre = yearpre;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 }

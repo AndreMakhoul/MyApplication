@@ -131,10 +131,10 @@
                 android:hint="Date of Birth: Month, Day, Year"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
+                  <TextView
                     android:id="@+id/tvDateOfBirth"
-                    android:layout_width="match_parent"
+                      android:hint="Date of Birth: Month, Day, Year"
+                      android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/custom_calendar_icon"
                     android:drawablePadding="10dp"

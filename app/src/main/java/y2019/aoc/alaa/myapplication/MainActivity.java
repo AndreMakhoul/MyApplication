@@ -151,6 +151,4 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         return true;
     }
 
-
-
 }
