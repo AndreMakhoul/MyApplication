@@ -47,6 +47,13 @@
                 android:fontFamily="@font/bungee"
                 android:text="price"
                 android:textSize="18sp" />
+            <TextView
+            android:id="@+id/textleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bungee"
+            android:text="left"
+            android:textSize="18sp" />
         </LinearLayout>
 
         <Button

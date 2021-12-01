@@ -60,6 +60,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
             TextView year = view.findViewById(R.id.textyear);
             TextView priceperday = view.findViewById(R.id.textprice);
             Button itemButton = view.findViewById(R.id.itemButton);
+            TextView left = view.findViewById(R.id.textleft);
 
             itemButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,6 +72,8 @@ public class CustomAdapter extends ArrayAdapter<Item> {
             textViewDescription.setText(item.getDescription());
             year.setText(item.getYearpre());
             priceperday.setText(item.getAmount());
+            left.setText(item.getLeft());
+
 
 
 

@@ -5,12 +5,14 @@ public class Item {
     private int resid;//image id to be loaded
     private String yearpre;
     private String amount;
+    private String left;
 
-    public Item(String description, int resid, String yearpre, String amount) {
+    public Item(String description, int resid, String yearpre, String amount, String left) {
         this.description = description;
         this.resid = resid;
         this.yearpre = yearpre;
         this.amount = amount;
+        this.left = left;
     }
 
     public String getDescription() {
@@ -29,6 +31,10 @@ public class Item {
         return amount;
     }
 
+    public String  getLeft() {
+        return left;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -43,5 +49,9 @@ public class Item {
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public void setLeft(String left) {
+        this.left = left;
     }
 }
