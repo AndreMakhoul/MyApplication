@@ -36,7 +36,8 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
                 startActivity(intent);
                 break;
             case R.id.exit:
-                finish();
+                this.finishAffinity();
+                break;
             case R.id.profile:
                 Intent intent1 = new Intent(AboutUsActivity.this, UserProfile.class);
                 startActivity(intent1);

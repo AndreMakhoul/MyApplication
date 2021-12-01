@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/profile"
+        android:title="👤 Profile"
+
+        />
+
+    <item
         android:id="@+id/camera"
         android:title="📷 Camera"
 
@@ -10,10 +16,20 @@
     <item
         android:id="@+id/exit"
         android:title="🚪 Exit"
+        />
 
-        />
     <item
-        android:id="@+id/profile"
-        android:title="Profile"
+        android:id="@+id/search_bar"
+        android:title="search"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+
+    <item android:id="@+id/image"
+        android:icon="@drawable/custom_face_icon"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="profile"
         />
+
+
 </menu>

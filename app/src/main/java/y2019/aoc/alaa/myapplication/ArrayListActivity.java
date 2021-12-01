@@ -1,8 +1,12 @@
 package y2019.aoc.alaa.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +31,7 @@ public class ArrayListActivity extends AppCompatActivity{
         list = new ArrayList<>();
 
         list.add(new Item("Audi A7", R.drawable.audi, "2016", "50₪","2"));
-        list.add(new Item("Porsche GT2 RS", R.drawable.whiteaudi, "2018", "50₪","2"));
+        list.add(new Item("Porsche GT2 RS", R.drawable.gt2rsnew, "2018", "50₪","2"));
         list.add(new Item("Audi R8", R.drawable.whiteaudi, "2020", "70₪","2"));
 
         //reference to the list view so it can programed
@@ -50,6 +54,35 @@ public class ArrayListActivity extends AppCompatActivity{
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);//inflate put the menu on the screen above
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) // switch checks the id then go to the case that related to it
+        {
+            case R.id.camera:
+                Toast.makeText(ArrayListActivity.this, "Camera", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ArrayListActivity.this, ProfileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.exit:
+                this.finishAffinity();
+                break;
+            case R.id.profile:
+                Intent intent1 = new Intent(ArrayListActivity.this, UserProfile.class);
+                startActivity(intent1);
+
+                break;//close application.
+
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

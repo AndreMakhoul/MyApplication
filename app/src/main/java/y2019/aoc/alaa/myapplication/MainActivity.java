@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
                 (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
-                1000 * 60 * 60 *2000 , pendingIntent);
+                1000 * 60 * 60 *24 , pendingIntent);
 
 
         buttonSignUp = findViewById(R.id.buttonSignUp);
