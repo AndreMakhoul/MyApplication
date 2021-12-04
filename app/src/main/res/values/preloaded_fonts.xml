@@ -3,7 +3,9 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aldrich</item>
         <item>@font/antic</item>
+        <item>@font/baloo</item>
         <item>@font/bangers</item>
         <item>@font/bungee</item>
+        <item>@font/faster_one</item>
     </array>
 </resources>
