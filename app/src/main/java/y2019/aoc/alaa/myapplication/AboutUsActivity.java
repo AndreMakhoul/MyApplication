@@ -20,34 +20,6 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
         setContentView(R.layout.activity_about_us);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);//inflate put the menu on the screen above
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) // switch checks the id then go to the case that related to it
-        {
-            case R.id.camera:
-                Toast.makeText(AboutUsActivity.this, "Camera", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(AboutUsActivity.this, ProfileActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.exit:
-                this.finishAffinity();
-                break;
-            case R.id.profile:
-                Intent intent1 = new Intent(AboutUsActivity.this, UserProfile.class);
-                startActivity(intent1);
-
-                break;//close application.
-
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onClick(DialogInterface dialogInterface, int i) {

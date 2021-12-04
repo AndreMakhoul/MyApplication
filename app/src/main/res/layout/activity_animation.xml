@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bangers"
-            android:text="Nation Wide Car Rental App"
+            android:text="The Best In The Business"
             android:textColor="@color/white"
             android:textAlignment="center"
             android:textStyle="italic"
