@@ -99,7 +99,7 @@
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/logoi" />
+                android:src="@drawable/cartooncar" />
 
             <TextView
                 android:layout_width="wrap_content"

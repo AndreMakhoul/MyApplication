@@ -10,12 +10,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import org.w3c.dom.Text;
 
-public class ArrayListActivity extends AppCompatActivity{
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+public class ArrayListActivity extends AppCompatActivity  {
 
     //the object of the view - design
     private ListView myListView;
@@ -23,6 +31,8 @@ public class ArrayListActivity extends AppCompatActivity{
     private CustomAdapter myAdapter;
     //object containing the item to be displayed - Data
     private ArrayList<Item> list;
+
+    String carsName[] ={"Audi,BMW,Ferrari,Tesla,Jeep,Volkswagen"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +43,15 @@ public class ArrayListActivity extends AppCompatActivity{
         list.add(new Item("Audi", R.drawable.audilogo));
         list.add(new Item("BMW", R.drawable.bmwlogo));
         list.add(new Item("Ferrari", R.drawable.ferrarilogo));
-        list.add(new Item("Tesla", R.drawable.teslalogo));
         list.add(new Item("Jeep", R.drawable.jeeplogo));
+        list.add(new Item("Tesla", R.drawable.teslalogo));
         list.add(new Item("Volkswagen", R.drawable.volkswagen));
-
-
-
 
 
         //reference to the list view so it can programed
         myListView = findViewById(R.id.myListView);
         // connect adapter with Data
-        myAdapter = new CustomAdapter(this,R.layout.car_row, list);
+        myAdapter = new CustomAdapter(this, R.layout.car_row, list);
         //connect adapter with view
         myListView.setAdapter(myAdapter);
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,6 +73,24 @@ public class ArrayListActivity extends AppCompatActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);//inflate put the menu on the screen above
+        MenuItem menuItem = menu.findItem(R.id.search_bar);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Type here to search");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s)//when user type.
+            {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s)//when the user change or type more.
+            {
+                myAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -91,5 +116,6 @@ public class ArrayListActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 }
