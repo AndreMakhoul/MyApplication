@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".CardViewActivity"
             android:exported="true" />
 
         <service
@@ -42,7 +42,7 @@
             android:name=".SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".CardViewActivity"
+            android:name=".AboutUsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
