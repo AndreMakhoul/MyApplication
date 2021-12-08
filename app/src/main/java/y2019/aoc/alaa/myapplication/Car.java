@@ -8,6 +8,13 @@ public class Car {
 
     public Car() { }
 
+    public Car(String description, int year, double price, int left) {
+        this.description = description;
+        this.year = year;
+        this.price = price;
+        this.left = left;
+    }
+
     public String getDescription() {
         return description;
     }

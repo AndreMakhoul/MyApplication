@@ -12,7 +12,17 @@ public class User {
     private double money;
     private ArrayList<Car> cars;
 
-    public User() {
+    public User() { }
+
+    public User(String picture, String name, String email, String password, String phoneNumber, String dateOfBirth, double money, ArrayList<Car> cars) {
+        this.picture = picture;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.money = money;
+        this.cars = cars;
     }
 
     public String getPicture() {

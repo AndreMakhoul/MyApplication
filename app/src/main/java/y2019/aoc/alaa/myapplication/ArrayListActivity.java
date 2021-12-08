@@ -54,9 +54,14 @@ public class ArrayListActivity extends AppCompatActivity  {
         myAdapter = new CustomAdapter(this, R.layout.car_row, list);
         //connect adapter with view
         myListView.setAdapter(myAdapter);
+
+        Intent intent = new Intent(this, CardViewActivity.class);
+
+
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Item:" + list.get(i), Toast.LENGTH_LONG).show();
             }
         });

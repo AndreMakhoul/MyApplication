@@ -62,6 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/cvname1"
                     android:fontFamily="@font/baloo"
                     android:padding="25dp"
                     android:text="Car Rent"
@@ -104,6 +105,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/cvname2"
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/baloo"
                 android:padding="25dp"
@@ -139,6 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/baloo"
+                    android:id="@+id/cvname3"
                     android:padding="25dp"
                     android:text="Car Rent"
                     android:textColor="@color/black"
@@ -179,6 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:id="@+id/cvname4"
                 android:fontFamily="@font/baloo"
                 android:padding="25dp"
                 android:text="Car Rent"
