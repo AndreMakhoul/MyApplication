@@ -16,6 +16,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -32,12 +36,21 @@ public class ArrayListActivity extends AppCompatActivity  {
     //object containing the item to be displayed - Data
     private ArrayList<Item> list;
 
-    String carsName[] ={"Audi,BMW,Ferrari,Tesla,Jeep,Volkswagen"};
-
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+    //write a message to the DataBase.
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_array_list);
+        String UID = mFirebaseAuth.getUid();
+        Toast.makeText(this, "UID:"+UID, Toast.LENGTH_LONG).show();
+        DatabaseReference myRef = database.getReference("users/"+UID);//getReference returns a root/message.
+        Item item = new Item("Audi", R.drawable.audilogo);
+        // reference to the list view so it can programmed.
+        myRef.push().setValue(item);
+
+
         list = new ArrayList<>();
 
         list.add(new Item("Audi", R.drawable.audilogo));
