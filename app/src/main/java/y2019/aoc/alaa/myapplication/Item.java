@@ -7,7 +7,9 @@ public class Item {
         this.description = description;
         this.resid = resid;
     }
+    public Item(){
 
+    }
     public String getDescription() {
         return description;
     }
