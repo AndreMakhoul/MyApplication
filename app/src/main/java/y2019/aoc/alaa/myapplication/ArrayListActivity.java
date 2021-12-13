@@ -87,6 +87,7 @@ public class ArrayListActivity extends AppCompatActivity  {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                intent.putExtra("category", list.get(i).getDescription());
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Item: " + myRef, Toast.LENGTH_LONG).show();
             }
@@ -99,24 +100,6 @@ public class ArrayListActivity extends AppCompatActivity  {
                 return false;
             }
         });
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Item item1 =dataSnapshot.getValue(Item.class);
-//                    list.add(item1);
-                    myAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
 
 
 
