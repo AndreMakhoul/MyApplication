@@ -30,27 +30,15 @@ public class CardViewActivity extends AppCompatActivity {
         cvname4 = findViewById(R.id.cvname4);
 
         String UID = mFirebaseAuth.getUid();
+        DatabaseReference myRef = database.getReference("Audi/");//getReference returns a root/message.
         String category = getIntent().getStringExtra("category");
 
         if(category.equals("Audi")) {
-            cvname1.setText("A4");
+            cvname1.setText("A1");
             cvname2.setText("A6");
             cvname3.setText("Q7");
             cvname4.setText("RS3");
         }
-        if(category.equals("BMW")) {
-            cvname1.setText("M4 Competition");
-            cvname2.setText("M8 Competition");
-            cvname3.setText("X7");
-            cvname4.setText("3 Series");
-        }
-
-
-
-
-
-
-
     }
 
 
