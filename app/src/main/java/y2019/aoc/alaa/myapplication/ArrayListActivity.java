@@ -54,14 +54,14 @@ public class ArrayListActivity extends AppCompatActivity  {
 
         //build a ref for user related data in Real Time DataBase using User ID
 //        DatabaseReference myRef = database.getReference("users/"+UID);//getReference returns a root/message.
-        DatabaseReference myRef = database.getReference("users/");//getReference returns a root/message.
+        DatabaseReference myRef = database.getReference("Cars/");//getReference returns a root/message.
 //        // adds an item to the firebase under the referenced specified
-//        myRef.push().setValue(new Item("Audi", R.drawable.audilogo));
-//        myRef.push().setValue(new Item("BMW", R.drawable.bmwlogo));
-//        myRef.push().setValue(new Item("Ferrari", R.drawable.ferrarilogo));
-//        myRef.push().setValue(new Item("Jeep", R.drawable.jeeplogo));
-//        myRef.push().setValue(new Item("Tesla", R.drawable.teslalogo));
-//        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));
+/*        myRef.push().setValue(new Item("Audi", R.drawable.audilogo));
+        myRef.push().setValue(new Item("BMW", R.drawable.bmwlogo));
+        myRef.push().setValue(new Item("Ferrari", R.drawable.ferrarilogo));
+        myRef.push().setValue(new Item("Jeep", R.drawable.jeeplogo));
+        myRef.push().setValue(new Item("Tesla", R.drawable.teslalogo));
+        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));*/
 
 
 //
