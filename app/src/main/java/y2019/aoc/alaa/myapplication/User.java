@@ -10,11 +10,13 @@ public class User {
     private String phoneNumber;
     private String dateOfBirth;
     private double money;
+    private int rentnumber;
     private ArrayList<Car> cars;
 
-    public User() { }
+    public User() {
+    }
 
-    public User(String picture, String name, String email, String password, String phoneNumber, String dateOfBirth, double money, ArrayList<Car> cars) {
+    public User(String picture, String name, String email, String password, String phoneNumber, String dateOfBirth, double money, int rentnumber, ArrayList<Car> cars) {
         this.picture = picture;
         this.name = name;
         this.email = email;
@@ -22,6 +24,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
         this.money = money;
+        this.rentnumber = rentnumber;
         this.cars = cars;
     }
 
@@ -87,5 +90,13 @@ public class User {
 
     public void setCars(ArrayList<Car> cars) {
         this.cars = cars;
+    }
+
+    public int getRentnumber() {
+        return rentnumber;
+    }
+
+    public void setRentnumber(int rentnumber) {
+        this.rentnumber = rentnumber;
     }
 }

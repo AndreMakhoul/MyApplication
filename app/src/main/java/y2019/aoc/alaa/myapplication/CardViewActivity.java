@@ -5,21 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class CardViewActivity extends AppCompatActivity {
+public class CardViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView cvname1, cvname2, cvname3, cvname4;
+    private Button a1Button;
     //Get instance of Authentication Project In FB console
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private DatabaseReference myRef;
-
+    private String category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,48 +32,45 @@ public class CardViewActivity extends AppCompatActivity {
         cvname4 = findViewById(R.id.cvname4);
 
         String UID = mFirebaseAuth.getUid();
-        DatabaseReference myRef = database.getReference("Cars/Audi/List");//getReference returns a root/message.
-        String category = getIntent().getStringExtra("category");
+        category = getIntent().getStringExtra("category");
 
+        DatabaseReference myRef = database.getReference("Cars/"+category+"/List");//getReference returns a root/message.
+        a1Button = findViewById(R.id.a1Button);
+        a1Button.setOnClickListener(this);
 
-     if(category.equals("Audi")) {
-        //  public Car(String description, int year, double price, int left, int image, int noOfSeats, boolean isElectric) {
+/*
+        Car c1 = new Car("A3","Audi",2020, 20000,3,R.drawable.audia3,2,false);
+        Car c2 = new Car("A6","Audi",2022, 40000,3,R.drawable.audia6,2,true);
+        Car c3 = new Car("Q5","Audi",2021, 50000,3,R.drawable.audiq5,2,true);
+        Car c4 = new Car("Q7","Audi",2018, 55000,3,R.drawable.audiq7,2,false);
+        myRef.push().setValue(c1);
+        myRef.push().setValue(c2);
+        myRef.push().setValue(c3);
+        myRef.push().setValue(c4);
 
-/*             Car c1 = new Car("Descrptoion of car","Audi",2022, 20000,3,R.drawable.audi,2,true);
-         Car c2 = new Car("Descrptoion of car","Audi",2022, 20000,3,R.drawable.audi,2,true);
-          Car c3 = new Car("Descrptoion of car","Audi",2022, 20000,3,R.drawable.audi,2,true);
-           Car c4 = new Car("Descrptoion of car","Audi",2022, 20000,3,R.drawable.audi,2,true);
-            myRef.push().setValue(c1);
-         myRef.push().setValue(c2);
-         myRef.push().setValue(c3);
-         myRef.push().setValue(c4);
-           ////*/
-
-
-             //
-//            myRef.push().setValue("A1");
-//            myRef.push().setValue("A6");
-//            myRef.push().setValue("Q7");
-//            myRef.push().setValue("RS3");
-
-
-//            cvname1.setText("A1");
-//            cvname2.setText("A6");
-//            cvname3.setText("Q7");
-//            cvname4.setText("RS3");
-
-
-
-
-       }
-
+*/
+        if(category.equals("Audi")) {
+            cvname1.setText("A3");
+            cvname2.setText("A6");
+            cvname3.setText("Q7");
+            cvname4.setText("RS3");
+        }
     }
-
 
 
 
     public void toArrayList(View view) {
         Intent intent = new Intent(this, ArrayListActivity.class);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, InformationActivity.class);
+        intent.putExtra("category", category);
+        if(view.getId() == a1Button.getId())
+            intent.putExtra("model", a1Button.getText().toString());
         startActivity(intent);
 
     }
