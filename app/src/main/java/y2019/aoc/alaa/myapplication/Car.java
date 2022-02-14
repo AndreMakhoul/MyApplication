@@ -2,7 +2,7 @@ package y2019.aoc.alaa.myapplication;
 
 public class Car {
     private String description;
-    private String category;
+    private String type;
     private int year;
     private double price;
     private int left;
@@ -12,9 +12,9 @@ public class Car {
 
     public Car() { }
 
-    public Car(String description, String category, int year, double price, int left, int image, int noOfSeats, boolean isElectric) {
+    public Car(String description, String type, int year, double price, int left, int image, int noOfSeats, boolean isElectric) {
         this.description = description;
-        this.category = category;
+        this.type = type;
         this.year = year;
         this.price = price;
         this.left = left;
@@ -79,11 +79,11 @@ public class Car {
         isElectric = electric;
     }
 
-    public String getCategory() {
-        return category;
+    public String getType() {
+        return type;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setType(String type) {
+        this.type = type;
     }
 }
