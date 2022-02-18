@@ -20,12 +20,10 @@ import java.util.List;
 
 public class CardViewActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView cvname1;
     private List<String> titels;
     private List<Integer> img;
     private MyAdapter adapter;
     private RecyclerView recyclerView;
-    private Button a1Button;
     //Get instance of Authentication Project In FB console
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
@@ -37,7 +35,6 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view);
-        cvname1 = findViewById(R.id.cvname1);
 
 
         String UID = mFirebaseAuth.getUid();
@@ -69,21 +66,6 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
-        if (category.equals("Audi")) {
-
-
-//            img.add(R.drawable.audia3);
-//            img.add(R.drawable.audia6);
-//            img.add(R.drawable.audiq5);
-//            img.add(R.drawable.audiq7);
-//
-//            titels.add("A3");
-//            titels.add("A6");
-//            titels.add("Q5");
-//            titels.add("Q7");
-
-
-        }
 
 
 /*
@@ -103,6 +85,9 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
 //            cvname3.setText("Q5");
 //            cvname4.setText("Q7");
 //        }
+
+
+
     }
 
 
