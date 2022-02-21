@@ -67,6 +67,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     itemView.getContext().startActivity(intent);
                 }
             });
+
+
         }
     }
 }

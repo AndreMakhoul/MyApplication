@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,7 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private DatabaseReference myRef;
     private String category;
+    private  String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,10 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_card_view);
 
 
+
         String UID = mFirebaseAuth.getUid();
         category = getIntent().getStringExtra("category");
+        type = getIntent().getStringExtra("type");
 
         DatabaseReference myRef = database.getReference("Cars/" + category + "/List");//getReference returns a root/message.
 
@@ -101,6 +105,7 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         Intent intent = new Intent(this, InformationActivity.class);
         startActivity(intent);
+
 
     }
 }

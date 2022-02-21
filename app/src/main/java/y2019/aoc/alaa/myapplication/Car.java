@@ -1,6 +1,8 @@
 package y2019.aoc.alaa.myapplication;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
     private String description;
     private String type;
     private int year;

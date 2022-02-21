@@ -31,7 +31,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class ArrayListActivity extends AppCompatActivity  {
+public class ArrayListActivity extends AppCompatActivity {
 
     //the object of the view - design
     private ListView myListView;
@@ -44,25 +44,26 @@ public class ArrayListActivity extends AppCompatActivity  {
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
 
+    private ArrayList<Item> backup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_array_list);
         String UID = mFirebaseAuth.getUid();
-        Toast.makeText(this, "UID:"+UID, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "UID:" + UID, Toast.LENGTH_LONG).show();
 
         DatabaseReference myRef = database.getReference("Cars/");//getReference returns a root/message.
 //        // adds an item to the firebase under the referenced specified
-/*
-        myRef.push().setValue(new Item("Audi", R.drawable.audilogo));
-        myRef.push().setValue(new Item("BMW", R.drawable.bmwlogo));
-        myRef.push().setValue(new Item("Ferrari", R.drawable.ferrarilogo));
-        myRef.push().setValue(new Item("Jeep", R.drawable.jeeplogo));
-        myRef.push().setValue(new Item("Tesla", R.drawable.teslalogo));
-        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));
+//
+//        myRef.push().setValue(new Item("Audi", R.drawable.audilogo));
+//        myRef.push().setValue(new Item("BMW", R.drawable.bmwlogo));
+//        myRef.push().setValue(new Item("Ferrari", R.drawable.ferrarilogo));
+//        myRef.push().setValue(new Item("Jeep", R.drawable.jeeplogo));
+//        myRef.push().setValue(new Item("Tesla", R.drawable.teslalogo));
+//        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));
 
-*/
+
 
 //
 //        list.add(new Item("Audi", R.drawable.audilogo));
@@ -102,15 +103,10 @@ public class ArrayListActivity extends AppCompatActivity  {
         });
 
 
-
-
-
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Item i = dataSnapshot.getValue(Item.class);
                     list.add(i);
                     myAdapter.notifyDataSetChanged();
@@ -172,4 +168,14 @@ public class ArrayListActivity extends AppCompatActivity  {
     }
 
 
+    public void search(String toSearch) {
+        backup = new ArrayList<>(list);
+        for (Item item : backup) {
+            if (!item.getDescription().equals("toSearch")) {
+                backup.remove(item);
+                myAdapter.notifyDataSetChanged();
+            }
+
+        }
+    }
 }
