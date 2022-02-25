@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -33,6 +35,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private EditText  etEmail,etPassWord,etFullName,etPhoneNumber;
     private DatePickerDialog.OnDateSetListener mOnDateSetListener;
     private FirebaseAuth mAuth;
+    private FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
+
 
     private ImageView suSmallLogoImage;
     private TextView suRentoGo,suSloganName,tvDateOfBirth;
@@ -42,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        mAuth = FirebaseAuth.getInstance();
         buttonSignIn = findViewById(R.id.buttonSignIn);
         buttonSignIn.setOnClickListener((view) -> {
             Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
@@ -114,6 +119,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            DatabaseReference myRef = database.getReference("user/"+ user.getUid());
+                            String key = myRef.push().getKey();
+                            User u1 = new User(etFullName.getText().toString(), email, password, etPhoneNumber.getText().toString());
+                            u1.setKey(key);
+                            myRef = database.getReference("user/"+ user.getUid()+"/"+key);
+                            myRef.setValue(u1);
                             Intent i = new Intent(SignUpActivity.this,ArrayListActivity.class);
                             startActivity(i);
                         } else {

@@ -63,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 @Override public void onClick(View v) {
                     Toast.makeText(itemView.getContext(), "CLICKED:"+mTextview.getText(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(itemView.getContext(), InformationActivity.class);
-                    intent.putExtra("category",mTextview.getText());
+                    intent.putExtra("type",mTextview.getText());
                     itemView.getContext().startActivity(intent);
                 }
             });

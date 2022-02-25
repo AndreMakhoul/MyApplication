@@ -17,17 +17,19 @@ import androidx.annotation.Nullable;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //takes the data and TenPlate and put it on view.
 public class CustomAdapter extends ArrayAdapter<Item> {
     private Context context;//view what i want to show on screen.
     private int resource;// id for xml how will the info will be ordered.
-
+    private List<Item> objects;
 
 
     public CustomAdapter(@NonNull Context context, int resource, @NonNull List<Item> objects) {
         super(context, resource, objects);
+        this.objects = objects;
         this.context = context;
         this.resource = resource;//this is the item row resource, design for each row.
     }
@@ -71,5 +73,11 @@ public class CustomAdapter extends ArrayAdapter<Item> {
 
         return view;
 
+    }
+
+
+    public void filterList(ArrayList<Item> filteredList){
+        objects = filteredList;
+        notifyDataSetChanged();
     }
 }

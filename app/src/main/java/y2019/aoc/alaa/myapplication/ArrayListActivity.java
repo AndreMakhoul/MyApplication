@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 public class ArrayListActivity extends AppCompatActivity {
 
@@ -43,7 +44,6 @@ public class ArrayListActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
-
     private ArrayList<Item> backup;
 
     @Override
@@ -52,6 +52,7 @@ public class ArrayListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_array_list);
         String UID = mFirebaseAuth.getUid();
         Toast.makeText(this, "UID:" + UID, Toast.LENGTH_LONG).show();
+
 
         DatabaseReference myRef = database.getReference("Cars/");//getReference returns a root/message.
 //        // adds an item to the firebase under the referenced specified
@@ -137,12 +138,14 @@ public class ArrayListActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s)//when the user change or type more.
             {
-                myAdapter.getFilter().filter(s);
+                filter(s);
+                Toast.makeText(ArrayListActivity.this, s, Toast.LENGTH_LONG).show();
                 return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -167,15 +170,16 @@ public class ArrayListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void search(String toSearch) {
-        backup = new ArrayList<>(list);
-        for (Item item : backup) {
-            if (!item.getDescription().equals("toSearch")) {
-                backup.remove(item);
-                myAdapter.notifyDataSetChanged();
+    private void filter(String s) {
+        ArrayList<Item> filtered = new ArrayList<>();
+        for (Item item : list) {
+            if(s!= null && item.getDescription() != null) {
+                if (item.getDescription().contains(s)) {
+                    filtered.add(item);
+                }
             }
-
         }
+        myAdapter.filterList(filtered);
     }
+
 }

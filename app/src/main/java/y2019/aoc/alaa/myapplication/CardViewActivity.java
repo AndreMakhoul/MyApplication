@@ -42,8 +42,6 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
 
         String UID = mFirebaseAuth.getUid();
         category = getIntent().getStringExtra("category");
-        type = getIntent().getStringExtra("type");
-
         DatabaseReference myRef = database.getReference("Cars/" + category + "/List");//getReference returns a root/message.
 
         recyclerView = findViewById(R.id.recycleview);

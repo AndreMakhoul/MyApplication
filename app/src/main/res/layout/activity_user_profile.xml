@@ -155,12 +155,14 @@
                 android:layout_height="match_parent"
                 android:text="textView"
                 android:drawableStart="@drawable/custom_email_icon"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                />
             <TextView
                 android:id="@+id/profilePassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="textView"
+
                 android:drawableStart="@drawable/custom_lock_icon"
                 android:textSize="20sp"/>
             <TextView
@@ -184,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#fece2f"
                 android:fontFamily="@font/bungee"
-                android:text="Update" />
+                android:text="Report An Accident" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

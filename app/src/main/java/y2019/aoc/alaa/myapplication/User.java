@@ -3,37 +3,38 @@ package y2019.aoc.alaa.myapplication;
 import java.util.ArrayList;
 
 public class User {
-    private String picture;
     private String name;
     private String email;
     private String password;
     private String phoneNumber;
-    private String dateOfBirth;
-    private double money;
-    private int rentnumber;
+    private String Key;
     private ArrayList<Car> cars;
 
     public User() {
     }
 
-    public User(String picture, String name, String email, String password, String phoneNumber, String dateOfBirth, double money, int rentnumber, ArrayList<Car> cars) {
-        this.picture = picture;
+    public User(String name, String email, String password, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.money = money;
-        this.rentnumber = rentnumber;
-        this.cars = cars;
     }
 
-    public String getPicture() {
-        return picture;
+    public User(String name, String email, String password, String phoneNumber, String key) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.Key = key;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
     }
 
     public String getName() {
@@ -68,21 +69,8 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 
-    public double getMoney() {
-        return money;
-    }
-
-    public void setMoney(double money) {
-        this.money = money;
-    }
 
     public ArrayList<Car> getCars() {
         return cars;
@@ -92,11 +80,5 @@ public class User {
         this.cars = cars;
     }
 
-    public int getRentnumber() {
-        return rentnumber;
-    }
 
-    public void setRentnumber(int rentnumber) {
-        this.rentnumber = rentnumber;
-    }
 }

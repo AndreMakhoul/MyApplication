@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,21 +20,21 @@ public class UserProfile extends AppCompatActivity {
     private TextView full_name, payment_label, booking_label, profileEmail, profilePassword, profileFullName, profileNumber;
     private ImageView profile_image;
     private String email, password;
-    private FirebaseDatabase database;
     private DatabaseReference userRef;
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private static final String USER = "user";
+    private FirebaseUser user = mAuth.getCurrentUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        Intent intent = getIntent();
-        email = intent.getStringExtra("email");
+//        Intent intent = getIntent();
+//        email = intent.getStringExtra("email");
 
-        full_name = findViewById(R.id.full_name);
-        payment_label = findViewById(R.id.payment_label);
-        booking_label = findViewById(R.id.booking_label);
         profileEmail = findViewById(R.id.profileEmail);
         profilePassword = findViewById(R.id.profilePassword);
         profileFullName = findViewById(R.id.profileFullName);
@@ -41,17 +43,13 @@ public class UserProfile extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(USER);
-
-        userRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference myRef = database.getReference("user/"+user.getUid());
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren()) {
-                    if (ds.child("email").getValue().equals(email)) {
-                        profileFullName.setText(ds.child("fullName").getValue(String.class));
-                        profileEmail.setText(ds.child("email").getValue(String.class));
-                        profileNumber.setText(ds.child("number").getValue(String.class));
-                        profilePassword.setText(ds.child("password").getValue(String.class));
-                    }
+                for( DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    User u = dataSnapshot.getValue(User.class);
+                    updateUserData(new User ( u.getName(), u.getEmail(), u.getPassword() ,u.getPhoneNumber()));
                 }
             }
 
@@ -60,6 +58,16 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+
+    private void updateUserData(User user) {
+        profileFullName.setText((user.getName()));
+        profileEmail.setText((user.getEmail()));
+        profilePassword.setText((user.getPassword()));
+        profileNumber.setText((user.getPhoneNumber()));
 
     }
 }
