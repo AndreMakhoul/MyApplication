@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class UserProfile extends AppCompatActivity {
     private TextView full_name, payment_label, booking_label, profileEmail, profilePassword, profileFullName, profileNumber;
     private ImageView profile_image;
     private String email, password;
+    private Button reportbtn;
     private DatabaseReference userRef;
     private FirebaseAuth mAuth= FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -31,7 +34,7 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
+       reportbtn = findViewById(R.id.reportbtn);
 //        Intent intent = getIntent();
 //        email = intent.getStringExtra("email");
 
@@ -69,5 +72,10 @@ public class UserProfile extends AppCompatActivity {
         profilePassword.setText((user.getPassword()));
         profileNumber.setText((user.getPhoneNumber()));
 
+    }
+
+    public void Report(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 }

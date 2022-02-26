@@ -184,7 +184,9 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/reportbtn"
                 android:backgroundTint="#fece2f"
+                android:onClick="Report"
                 android:fontFamily="@font/bungee"
                 android:text="Report An Accident" />
         </LinearLayout>
