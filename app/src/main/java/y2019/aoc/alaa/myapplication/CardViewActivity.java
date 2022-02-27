@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardViewActivity extends AppCompatActivity implements View.OnClickListener {
+public class CardViewActivity extends AppCompatActivity  {
 
     private List<String> titels;
     private List<Integer> img;
@@ -31,7 +31,6 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private DatabaseReference myRef;
     private String category;
-    private  String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +98,5 @@ public class CardViewActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(this, InformationActivity.class);
-        startActivity(intent);
 
-
-    }
 }

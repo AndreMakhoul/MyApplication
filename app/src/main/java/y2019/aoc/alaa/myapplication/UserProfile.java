@@ -19,12 +19,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
-    private TextView full_name, payment_label, booking_label, profileEmail, profilePassword, profileFullName, profileNumber;
+    private TextView profileEmail, profilePassword, profileFullName, profileNumber;
     private ImageView profile_image;
     private String email, password;
     private Button reportbtn;
     private DatabaseReference userRef;
-    private FirebaseAuth mAuth= FirebaseAuth.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private static final String USER = "user";
     private FirebaseUser user = mAuth.getCurrentUser();
@@ -34,10 +34,7 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-       reportbtn = findViewById(R.id.reportbtn);
-//        Intent intent = getIntent();
-//        email = intent.getStringExtra("email");
-
+        reportbtn = findViewById(R.id.reportbtn);
         profileEmail = findViewById(R.id.profileEmail);
         profilePassword = findViewById(R.id.profilePassword);
         profileFullName = findViewById(R.id.profileFullName);
@@ -46,13 +43,13 @@ public class UserProfile extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(USER);
-        DatabaseReference myRef = database.getReference("user/"+user.getUid());
+        DatabaseReference myRef = database.getReference("user/" + user.getUid());
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for( DataSnapshot dataSnapshot:snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User u = dataSnapshot.getValue(User.class);
-                    updateUserData(new User ( u.getName(), u.getEmail(), u.getPassword() ,u.getPhoneNumber()));
+                    updateUserData(new User(u.getName(), u.getEmail(), u.getPassword(), u.getPhoneNumber()));
                 }
             }
 
@@ -61,7 +58,6 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
-
 
 
     }

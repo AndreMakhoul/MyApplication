@@ -195,6 +195,7 @@
             android:layout_height="72dp"
             android:backgroundTint="@color/yellow"
             android:text="Rent"
+            android:id="@+id/verifybtn"
             android:textColor="@color/black"
             android:textSize="30sp"
             />

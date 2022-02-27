@@ -61,9 +61,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             mTextview = itemView.findViewById(R.id.cvname1);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), "CLICKED:"+mTextview.getText(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(itemView.getContext(), "CLICKED:"+mTextview.getText(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(itemView.getContext(), InformationActivity.class);
-                    intent.putExtra("type",mTextview.getText());
+                    intent.putExtra("category",mTextview.getText());
                     itemView.getContext().startActivity(intent);
                 }
             });

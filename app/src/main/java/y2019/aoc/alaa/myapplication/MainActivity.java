@@ -29,7 +29,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity implements View.OnLongClickListener //implements ממשק onLongClickListener (Long Click) onLongClick.
 {
     private static final String TAG = "FIREBASE";
-    private static final int NOTIFICATION_REMINDER_NIGHT = 1;
     private TextView rentoGo, sloganName;
     private EditText email, password;
     private ImageView smallLogoImage;
@@ -40,36 +39,27 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        Intent notifyIntent = new Intent(this,NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis(),
-                1000 * 60 * 60 *24 , pendingIntent);
+
 
 
         buttonSignUp = findViewById(R.id.buttonSignUp);
         buttonSignUp.setOnClickListener((view) -> {
             Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
 
-            Pair [] pairs = new Pair[6];
-            pairs[0] = new Pair<View,String>(rentoGo,"logo_text");
-            pairs[1] = new Pair<View,String>(sloganName,"logo_desc");
-            pairs[2] = new Pair<View,String>(email,"email_tran");
-            pairs[3] = new Pair<View,String>(password,"password_tran");
-            pairs[4] = new Pair<View,String>(go,"button_tran");
-            pairs[5] = new Pair<View,String>(buttonSignUp,"login_signup_tran");
+            Pair[] pairs = new Pair[6];
+            pairs[0] = new Pair<View, String>(rentoGo, "logo_text");
+            pairs[1] = new Pair<View, String>(sloganName, "logo_desc");
+            pairs[2] = new Pair<View, String>(email, "email_tran");
+            pairs[3] = new Pair<View, String>(password, "password_tran");
+            pairs[4] = new Pair<View, String>(go, "button_tran");
+            pairs[5] = new Pair<View, String>(buttonSignUp, "login_signup_tran");
 
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
             startActivity(intent, options.toBundle());//to bundle carry the animation.
-        } );
-
-
-
-
+        });
 
 
         // returns a reference to the instance of the project firebase (console) and connect it to the project.
@@ -84,8 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
         //sets the require button to response to long click, otherwise it wont
         go.setOnLongClickListener(this);
-
-
 
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE); // creates a localFile which saves the SharedPreferences.
@@ -121,36 +109,34 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
             intent.putExtra("email", email.getText().toString());
 
-            login(email.getText().toString(),password.getText().toString());
+            login(email.getText().toString(), password.getText().toString());
         }
     }
 
 
+    public void login(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password) //instance of the firebase.
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)//onComplete method waits for the firebase to finish his job then it gives us the result.
+                    {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent i = new Intent(MainActivity.this, ArrayListActivity.class);
+                            startActivity(i);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException()); //getException has description for why the information email or password are wrong.
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
 
- public void login(String email, String password){
-     mAuth.signInWithEmailAndPassword(email, password) //instance of the firebase.
-             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
-             {
-                 @Override
-                 public void onComplete(@NonNull Task<AuthResult> task)//onComplete method waits for the firebase to finish his job then it gives us the result.
-                 {
-                     if (task.isSuccessful()) {
-                         // Sign in success, update UI with the signed-in user's information
-                         Log.d(TAG, "signInWithEmail:success");
-                         FirebaseUser user = mAuth.getCurrentUser();
-                         Intent i = new Intent(MainActivity.this, ArrayListActivity.class);
-                         startActivity(i);
-                     } else {
-                         // If sign in fails, display a message to the user.
-                         Log.w(TAG, "signInWithEmail:failure", task.getException()); //getException has description for why the information email or password are wrong.
-                         Toast.makeText(MainActivity.this, "Authentication failed.",
-                                 Toast.LENGTH_SHORT).show();
-                     }
-
-                     // ...
-                 }
-             });
- }
+                        // ...
+                    }
+                });
+    }
 
     public void signUp(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
