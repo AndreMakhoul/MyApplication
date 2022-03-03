@@ -24,9 +24,6 @@ import java.util.Random;
 public class NotificationIntentService extends IntentService {
     //this is the channel id for notification uses.
     private static final int NOTIFICATION_ID = 3;
-    final int min = 111111;
-    final int max = 999999;
-    final int randomNum = new Random().nextInt((max - min) + 1) + min;
     public NotificationIntentService() {
         super("NotificationIntentService");
     }
@@ -34,20 +31,15 @@ public class NotificationIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Intent intent1 = new Intent(this, InformationActivity.class);
-        intent.putExtra("random", randomNum);
-//        startActivity(intent);
-
         Notification.Builder noBuilder = new Notification.Builder(this);
         //todo need to change the notification title.
         noBuilder.setContentTitle("RentoGo"); //notification title
-        noBuilder.setContentText("Your verification Code Is: "+ randomNum);
+        noBuilder.setContentText("Your Rent Is Successful");
         noBuilder.setSmallIcon(R.drawable.ic_baseline_directions_car_24);
         //this intent will be pending until the user clicks on the notification
         //and will activate the activity specified in the intent
         Intent noInetnt1 = new Intent(this, InformationActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 2, noInetnt1, PendingIntent.FLAG_UPDATE_CURRENT);
-
         noBuilder.setContentIntent(pendingIntent);
         Notification notification = noBuilder.build();
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
@@ -68,7 +60,6 @@ public class NotificationIntentService extends IntentService {
         }
         noBuilder.build();
         mNotificationManager.notify(NOTIFICATION_ID, notification);
-
     }
 
 

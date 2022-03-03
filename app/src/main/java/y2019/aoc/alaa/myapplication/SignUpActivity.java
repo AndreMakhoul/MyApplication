@@ -99,7 +99,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mOnDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                String date =    day + "/" + month + "/" + year;
+                int d= ((int)month+1);
+                String date =    day + "/" + d + "/" + year;
                 tvDateOfBirth.setText(date);
             }
         };

@@ -28,10 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 public class InformationActivity extends AppCompatActivity {
 
     private static final int NOTIFICATION_REMINDER_NIGHT = 1;
-    private Button verifybtn;
+    private Button verifyBtn;
     private String myText;
-//    private TextView category, type, year, price, electric, numofseats, stock;
-//    private ImageView img;
+    private TextView category, type, year, price, electric, numofseats, stock;
+    private ImageView img;
     //Get instance of Authentication Project In FB console
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
@@ -39,31 +39,39 @@ public class InformationActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private String type1;
     private String category1;
-    private String random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
-//        category = findViewById(R.id.category);
-//        type = findViewById(R.id.type);
-//        year = findViewById(R.id.year);
-//        price = findViewById(R.id.price);
-//        electric = findViewById(R.id.electric);
-//        numofseats = findViewById(R.id.numofseats);
-//        stock = findViewById(R.id.stock);
-//        img = findViewById(R.id.img);
-
-        random = getIntent().getStringExtra("random");
-        verifybtn = findViewById(R.id.verifybtn);
+        category = findViewById(R.id.category);
+        type = findViewById(R.id.type);
+        year = findViewById(R.id.year);
+        price = findViewById(R.id.price);
+        electric = findViewById(R.id.electric);
+        numofseats = findViewById(R.id.numofseats);
+        stock = findViewById(R.id.stock);
+        img = findViewById(R.id.img);
+        verifyBtn = findViewById(R.id.verifybtn);
         category1 = getIntent().getStringExtra("category");
-        Toast.makeText(InformationActivity.this, "category: " + category1 + "Random: "+random, Toast.LENGTH_SHORT).show();
+        type1 = getIntent().getStringExtra("type");
 
-        Car c1 = new Car("A3", "Audi", 2020, 20000, 2, R.drawable.audia3, 2, false);
-        Car c2 = new Car("A6", "Audi", 2022, 40000, 4, R.drawable.audia6, 4, true);
-        Car c3 = new Car("Q5", "Audi", 2021, 50000, 2, R.drawable.audiq5, 4, true);
-        Car c4 = new Car("Q7", "Audi", 2018, 55000, 4, R.drawable.audiq7, 2, false);
+        DatabaseReference myRef ;//getReference returns a root/message.
+
+
+
         if (category1.equals("A3")) {
+            myRef = database.getReference("Cars/"+ type1 + "List/" + category1);
+
+//            type.setText(c1.getDescription());
+//            category.setText(c1.getType());
+//            year.setText(c1.getYear());
+//            price.setText(c1.getPrice());
+//            electric.setText((c1.isElectric()));
+//            numofseats.setText(c1.getNoOfSeats());
+//            stock.setText(c1.getLeft());
+//            img.setImageResource(c1.getImage());
+
 
         }
 
@@ -72,22 +80,20 @@ public class InformationActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast
                 (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        verifybtn.setOnClickListener(new View.OnClickListener() {
+        verifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
+
                 AlertDialog.Builder myDialog = new AlertDialog.Builder(InformationActivity.this);
-                myDialog.setTitle("Write the verification Code Please");
+                myDialog.setTitle("Are you Sure You Want To Rent The Car!");
 
                 final EditText ver = new EditText(InformationActivity.this);
-                ver.setInputType(InputType.TYPE_CLASS_NUMBER);
-                myDialog.setView(ver);
                 myDialog.setPositiveButton("verify", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
                         myText = ver.getText().toString();
-                        Toast.makeText(InformationActivity.this, "Verify Code Is: " + myText + "random: " + random, Toast.LENGTH_LONG).show();
                     }
 
                 });

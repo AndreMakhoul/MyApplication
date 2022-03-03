@@ -61,7 +61,7 @@ public class CardViewActivity extends AppCompatActivity  {
             titels.add("Q7");
 
         }
-        adapter = new MyAdapter(this, titels, img);
+        adapter = new MyAdapter(this, titels, img, category);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -69,17 +69,15 @@ public class CardViewActivity extends AppCompatActivity  {
 
 
 
-/*
+
         Car c1 = new Car("A3","Audi",2020, 20000,2,R.drawable.audia3,2,false);
         Car c2 = new Car("A6","Audi",2022, 40000,4,R.drawable.audia6,4,true);
         Car c3 = new Car("Q5","Audi",2021, 50000,2,R.drawable.audiq5,4,true);
         Car c4 = new Car("Q7","Audi",2018, 55000,4,R.drawable.audiq7,2,false);
-        myRef.push().setValue(c1);
-        myRef.push().setValue(c2);
-        myRef.push().setValue(c3);
-        myRef.push().setValue(c4);
+       // myRef.setValue("A3");
+//        myRef = database.getReference("Cars/" + category + "/List/A3");//getReference returns a root/message.
+//        myRef.setValue(c1);
 
-*/
 //        if (category.equals("Audi")) {
 //            cvname1.setText("A3");
 //            cvname2.setText("A6");

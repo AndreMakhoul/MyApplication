@@ -6,15 +6,15 @@ public class Car implements Serializable {
     private String description;
     private String type;
     private int year;
-    private double price;
+    private int price;
     private int left;
     private int image; //resid
     private int noOfSeats;//
-    private boolean isElectric;
+    private Boolean isElectric;
 
     public Car() { }
 
-    public Car(String description, String type, int year, double price, int left, int image, int noOfSeats, boolean isElectric) {
+    public Car(String description, String type, int year, int price, int left, int image, int noOfSeats, Boolean isElectric) {
         this.description = description;
         this.type = type;
         this.year = year;
@@ -41,11 +41,11 @@ public class Car implements Serializable {
         this.year = year;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -73,11 +73,11 @@ public class Car implements Serializable {
         this.noOfSeats = noOfSeats;
     }
 
-    public boolean isElectric() {
+    public Boolean isElectric() {
         return isElectric;
     }
 
-    public void setElectric(boolean electric) {
+    public void setElectric(Boolean electric) {
         isElectric = electric;
     }
 
