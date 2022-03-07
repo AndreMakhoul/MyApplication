@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
     private TextView rentoGo, sloganName;
     private EditText email, password;
     private ImageView smallLogoImage;
-    private Button buttonForgetPass, go, buttonSignUp;
+    private Button buttonReset, go, buttonSignUp;
     private FirebaseAuth mAuth;
 
     @Override
@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         email = findViewById(R.id.email);
         password = findViewById(R.id.Password);
         smallLogoImage = findViewById(R.id.smallLogoImage);
-        buttonForgetPass = findViewById(R.id.buttonForgetPass);
+        buttonReset = findViewById(R.id.buttonReset);
         go = findViewById(R.id.go);
 
         //sets the require button to response to long click, otherwise it wont
-        go.setOnLongClickListener(this);
+        buttonReset.setOnLongClickListener(this);
 
 
         SharedPreferences sp = getSharedPreferences("settings", MODE_PRIVATE); // creates a localFile which saves the SharedPreferences.

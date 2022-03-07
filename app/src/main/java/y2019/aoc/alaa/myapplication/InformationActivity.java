@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,14 +59,13 @@ public class InformationActivity extends AppCompatActivity {
         category1 = getIntent().getStringExtra("category");
         type1 = getIntent().getStringExtra("type");
 
-        DatabaseReference myRef ;//getReference returns a root/message.
+        DatabaseReference myRef;//getReference returns a root/message.
 
 
+        myRef = database.getReference("Cars/" + type1 + "List/" + category1);
+        Toast.makeText(InformationActivity.this, type1 + ": " + category1, Toast.LENGTH_LONG).show();
 
-        if (category1.equals("A3")) {
-            myRef = database.getReference("Cars/"+ type1 + "List/" + category1);
 
-//            type.setText(c1.getDescription());
 //            category.setText(c1.getType());
 //            year.setText(c1.getYear());
 //            price.setText(c1.getPrice());
@@ -71,9 +73,6 @@ public class InformationActivity extends AppCompatActivity {
 //            numofseats.setText(c1.getNoOfSeats());
 //            stock.setText(c1.getLeft());
 //            img.setImageResource(c1.getImage());
-
-
-        }
 
 
         Intent notifyIntent = new Intent(this, NotificationReceiver.class);
@@ -92,7 +91,7 @@ public class InformationActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
                         myText = ver.getText().toString();
                     }
 
@@ -109,6 +108,8 @@ public class InformationActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
 
 }
