@@ -21,14 +21,12 @@ import com.google.firebase.database.ValueEventListener;
 public class UserProfile extends AppCompatActivity {
     private TextView profileEmail, profilePassword, profileFullName, profileNumber ,booking_label;
     private ImageView profile_image;
-    private String email, password;
     private Button reportbtn;
     private DatabaseReference userRef;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private static final String USER = "user";
     private FirebaseUser user = mAuth.getCurrentUser();
-     int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,7 @@ public class UserProfile extends AppCompatActivity {
         profileFullName = findViewById(R.id.profileFullName);
         profileNumber = findViewById(R.id.profileNumber);
         profile_image = findViewById(R.id.profile_image);
-//        count = findViewById(R.id.booking_label);
+        booking_label=findViewById(R.id.booking_label);
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(USER);
         DatabaseReference myRef = database.getReference("user/" + user.getUid());
@@ -49,7 +47,7 @@ public class UserProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     User u = dataSnapshot.getValue(User.class);
-                    updateUserData(new User(u.getName(), u.getEmail(), u.getPassword(), u.getPhoneNumber()));
+                    updateUserData(new User(u.getName(), u.getEmail(), u.getPassword(), u.getPhoneNumber(),u.getLabel()));
                 }
             }
 
@@ -67,7 +65,7 @@ public class UserProfile extends AppCompatActivity {
         profileEmail.setText((user.getEmail()));
         profilePassword.setText((user.getPassword()));
         profileNumber.setText((user.getPhoneNumber()));
-
+        booking_label.setText(user.getLabel()+"");
     }
 
     public void Report(View view) {

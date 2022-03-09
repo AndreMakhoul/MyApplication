@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +44,9 @@ public class InformationActivity extends AppCompatActivity {
     private String type1;
     private String category1;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,7 @@ public class InformationActivity extends AppCompatActivity {
         verifyBtn = findViewById(R.id.verifybtn);
         category1 = getIntent().getStringExtra("category");
         type1 = getIntent().getStringExtra("type");
+
 
         DatabaseReference myRef;//getReference returns a root/message.
 
@@ -90,13 +95,7 @@ public class InformationActivity extends AppCompatActivity {
          });
 
 
-//            category.setText(c1.getType());
-//            year.setText(c1.getYear());
-//            price.setText(c1.getPrice());
-//            electric.setText((c1.isElectric()));
-//            numofseats.setText(c1.getNoOfSeats());
-//            stock.setText(c1.getLeft());
-//            img.setImageResource(c1.getImage());
+
 
 
         Intent notifyIntent = new Intent(this, NotificationReceiver.class);

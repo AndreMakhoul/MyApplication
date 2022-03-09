@@ -7,14 +7,14 @@ public class User {
     private String email;
     private String password;
     private String phoneNumber;
-    private Integer label;
+    private int label;
     private String Key;
     private ArrayList<Car> cars;
 
     public User() {
     }
 
-    public User(String name, String email, String password, String phoneNumber, Integer label) {
+    public User(String name, String email, String password, String phoneNumber, int label) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -22,13 +22,13 @@ public class User {
         this.label = label;
     }
 
-    public User(String name, String email, String password, String phoneNumber, String key, Integer label) {
+    public User(String name, String email, String password, String phoneNumber, String key) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.Key = key;
-        this.label = label;
+        this.label = 0;
 
     }
     public User(String name, String email, String password, String phoneNumber) {
@@ -36,13 +36,15 @@ public class User {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.label = 0;
     }
 
-    public Integer getLabel() {
+
+    public int getLabel() {
         return label;
     }
 
-    public void setLabel(Integer label) {
+    public void setLabel(int label) {
         this.label = label;
     }
 

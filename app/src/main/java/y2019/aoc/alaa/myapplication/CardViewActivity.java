@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -61,6 +58,19 @@ public class CardViewActivity extends AppCompatActivity  {
             titels.add("Q7");
 
         }
+
+        if(category.equals("BMW"))
+        {
+            img.add(R.drawable.bmw1series);
+            img.add(R.drawable.bmwx6);
+            img.add(R.drawable.bmwx7);
+            img.add(R.drawable.bmw2series);
+
+            titels.add("1 Series");
+            titels.add("X6");
+            titels.add("X7");
+            titels.add("2 Series");
+        }
         adapter = new MyAdapter(this, titels, img, category);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -74,9 +84,9 @@ public class CardViewActivity extends AppCompatActivity  {
         Car c2 = new Car("A6","Audi",2022, 40000,4,R.drawable.audia6,4,true);
         Car c3 = new Car("Q5","Audi",2021, 50000,2,R.drawable.audiq5,4,true);
         Car c4 = new Car("Q7","Audi",2018, 55000,4,R.drawable.audiq7,2,false);
-       // myRef.setValue("A3");
-//        myRef = database.getReference("Cars/" + category + "/List/A3");//getReference returns a root/message.
-//        myRef.setValue(c1);
+//        myRef.setValue("A3");
+//        myRef = database.getReference("Cars/" + category + "/List/Q7");//getReference returns a root/message.
+//        myRef.setValue(c4);
 
 //        if (category.equals("Audi")) {
 //            cvname1.setText("A3");
