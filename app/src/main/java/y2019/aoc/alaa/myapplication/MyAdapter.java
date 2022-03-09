@@ -19,13 +19,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Context context;
     private List<String> titles;
     private List<Integer> images;
-    private String type;
+    private String cate;
 
-    public MyAdapter(Context context, List<String> titles, List<Integer> images, String type){
+    public MyAdapter(Context context, List<String> titles, List<Integer> images, String cate){
         this.context=context;
         this.titles=titles;
         this.images=images;
-        this.type = type;
+        this.cate = cate;
 
 
     }
@@ -50,19 +50,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return titles.size();
     }
 
-    public String getType() {
-        return type;
+    public String getCate() {
+        return cate;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCate(String cate) {
+        this.cate = cate;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         ImageView mImageView;
         TextView mTextview;
-        private String type = getType();
+        private String cate = getCate();
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
@@ -74,8 +74,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 @Override public void onClick(View v) {
 //                    Toast.makeText(itemView.getContext(), "CLICKED:"+mTextview.getText(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(itemView.getContext(), InformationActivity.class);
-                    intent.putExtra("category",mTextview.getText());
-                    intent.putExtra("type", type);
+                    intent.putExtra("type",mTextview.getText());
+                    intent.putExtra("category", cate);
                     itemView.getContext().startActivity(intent);
                 }
             });

@@ -66,9 +66,9 @@ public class InformationActivity extends AppCompatActivity {
         DatabaseReference myRef;//getReference returns a root/message.
 
 
-        myRef = database.getReference("Cars/" + type1 + "/List");
+        myRef = database.getReference("Cars/" + category1 + "/List");
 
-        Toast.makeText(InformationActivity.this, type1 + ": " + category1, Toast.LENGTH_LONG).show();
+        Toast.makeText(InformationActivity.this, category1 + ": " + type1, Toast.LENGTH_LONG).show();
          myRef.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -76,11 +76,11 @@ public class InformationActivity extends AppCompatActivity {
                  {
 
                      Car c = dataSnapshot.getValue(Car.class);
-                     if(category1.equals(c.getDescription())) {
-                         type.setText(c.getDescription());
-                         category.setText(c.getType());
+                     if(type1.equals(c.getType())) {
+                         type.setText(c.getType());
+                         category.setText(c.getDescription());
                          year.setText(c.getYear()+"");
-                         price.setText(c.getPrice()+"");
+                         price.setText(c.getPrice()+"$");
                          electric.setText(c.isElectric()+"");
                          numofseats.setText(c.getNoOfSeats()+"");
                          img.setBackgroundResource(c.getImage());
