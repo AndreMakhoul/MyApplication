@@ -1,7 +1,9 @@
 package y2019.aoc.alaa.myapplication;
 
-import java.io.Serializable;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
+@IgnoreExtraProperties
 public class Car implements Serializable {
     private String description;
     private String type;

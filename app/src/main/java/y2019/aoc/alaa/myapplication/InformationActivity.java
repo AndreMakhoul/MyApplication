@@ -33,7 +33,7 @@ public class InformationActivity extends AppCompatActivity {
     private static final int NOTIFICATION_REMINDER_NIGHT = 1;
     private Button verifyBtn;
     private String myText;
-    private TextView category, type, year, price, electric, numofseats, stock;
+    private TextView category, type, year, price, electric, numofseats;
     private ImageView img;
     //Get instance of Authentication Project In FB console
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
@@ -53,7 +53,6 @@ public class InformationActivity extends AppCompatActivity {
         price = findViewById(R.id.price);
         electric = findViewById(R.id.electric);
         numofseats = findViewById(R.id.numofseats);
-        stock = findViewById(R.id.stock);
         img = findViewById(R.id.img);
         verifyBtn = findViewById(R.id.verifybtn);
         category1 = getIntent().getStringExtra("category");
@@ -62,8 +61,33 @@ public class InformationActivity extends AppCompatActivity {
         DatabaseReference myRef;//getReference returns a root/message.
 
 
-        myRef = database.getReference("Cars/" + type1 + "List/" + category1);
+        myRef = database.getReference("Cars/" + type1 + "/List");
+
         Toast.makeText(InformationActivity.this, type1 + ": " + category1, Toast.LENGTH_LONG).show();
+         myRef.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 for( DataSnapshot dataSnapshot: snapshot.getChildren())
+                 {
+
+                     Car c = dataSnapshot.getValue(Car.class);
+                     if(category1.equals(c.getDescription())) {
+                         type.setText(c.getDescription());
+                         category.setText(c.getType());
+                         year.setText(c.getYear()+"");
+                         price.setText(c.getPrice()+"");
+                         electric.setText(c.isElectric()+"");
+                         numofseats.setText(c.getNoOfSeats()+"");
+                         img.setBackgroundResource(c.getImage());
+                     }
+                     }
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError error) {
+
+             }
+         });
 
 
 //            category.setText(c1.getType());
@@ -91,7 +115,7 @@ public class InformationActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
                         myText = ver.getText().toString();
                     }
 

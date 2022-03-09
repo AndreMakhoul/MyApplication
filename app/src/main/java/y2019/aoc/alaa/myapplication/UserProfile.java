@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
-    private TextView profileEmail, profilePassword, profileFullName, profileNumber;
+    private TextView profileEmail, profilePassword, profileFullName, profileNumber ,booking_label;
     private ImageView profile_image;
     private String email, password;
     private Button reportbtn;
@@ -28,7 +28,7 @@ public class UserProfile extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private static final String USER = "user";
     private FirebaseUser user = mAuth.getCurrentUser();
-
+     int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class UserProfile extends AppCompatActivity {
         profileFullName = findViewById(R.id.profileFullName);
         profileNumber = findViewById(R.id.profileNumber);
         profile_image = findViewById(R.id.profile_image);
-
+//        count = findViewById(R.id.booking_label);
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(USER);
         DatabaseReference myRef = database.getReference("user/" + user.getUid());
