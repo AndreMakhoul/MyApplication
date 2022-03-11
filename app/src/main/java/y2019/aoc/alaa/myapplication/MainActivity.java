@@ -42,9 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-
-
-
         buttonSignUp = findViewById(R.id.buttonSignUp);
         buttonSignUp.setOnClickListener((view) -> {
             Intent intent = new Intent(MainActivity.this, SignUpActivity.class);

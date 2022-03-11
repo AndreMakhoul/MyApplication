@@ -18,16 +18,16 @@ public class AnimationActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 2000;//2 SECONDS
     //variable
-    Animation topAnim,middleAnim, bottomAnim;
+    Animation topAnim, middleAnim, bottomAnim;
     ImageView logoimagie;
     TextView logo, underlogo;
     private Intent musicIntent;
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //Animation
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         middleAnim = AnimationUtils.loadAnimation(this, R.anim.middle_animation);
@@ -44,14 +44,14 @@ public class AnimationActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(AnimationActivity.this, MainActivity.class);
 
-            Pair [] pairs = new Pair[2];
-            pairs[0] = new Pair<View,String>(logoimagie, "logo_image");
-            pairs[1] = new Pair<View,String>(logo, "logo_text");
+            Pair[] pairs = new Pair[2];
+            pairs[0] = new Pair<View, String>(logoimagie, "logo_image");
+            pairs[1] = new Pair<View, String>(logo, "logo_text");
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(AnimationActivity.this, pairs);
-            startActivity(intent,options.toBundle());//will carry our animation (bundle);
+            startActivity(intent, options.toBundle());//will carry our animation (bundle);
 
         }, SPLASH_SCREEN);
-       // this will start the service which in turn will the music.
+        // this will start the service which in turn will the music.
         musicIntent = new Intent(this, MusicService.class);// connect the activity with service in order to run the service.
         startService(musicIntent);
 

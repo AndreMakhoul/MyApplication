@@ -65,7 +65,6 @@ public class ArrayListActivity extends AppCompatActivity {
 //        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));
 
 
-
 //
 //        list.add(new Item("Audi", R.drawable.audilogo));
 //        list.add(new Item("BMW", R.drawable.bmwlogo));
@@ -173,7 +172,7 @@ public class ArrayListActivity extends AppCompatActivity {
     private void filter(String s) {
         ArrayList<Item> filtered = new ArrayList<>();
         for (Item item : list) {
-            if(s!= null && item.getDescription() != null) {
+            if (s != null && item.getDescription() != null) {
                 if (item.getDescription().contains(s)) {
                     filtered.add(item);
                 }

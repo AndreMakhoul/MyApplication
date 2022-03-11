@@ -20,9 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
     private TextView profileEmail, profilePassword, profileFullName, profileNumber, booking_label, payment_label;
-    private ImageView profile_image;
-    private Button reportbtn;
-    private DatabaseReference userRef;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private FirebaseUser user;
@@ -36,7 +33,6 @@ public class UserProfile extends AppCompatActivity {
         profilePassword = findViewById(R.id.profilePassword);
         profileFullName = findViewById(R.id.profileFullName);
         profileNumber = findViewById(R.id.profileNumber);
-        profile_image = findViewById(R.id.profile_image);
         booking_label = findViewById(R.id.booking_label);
         payment_label = findViewById(R.id.payment_label);
         database = FirebaseDatabase.getInstance();
@@ -67,8 +63,8 @@ public class UserProfile extends AppCompatActivity {
         profileEmail.setText((user.getEmail()));
         profilePassword.setText((user.getPassword()));
         profileNumber.setText((user.getPhoneNumber()));
-        booking_label.setText((user.getLabel() +""));
-        payment_label.setText(user.getMoney()+"$");
+        booking_label.setText((user.getLabel() + ""));
+        payment_label.setText(user.getMoney() + "$");
     }
 
     public void Report(View view) {

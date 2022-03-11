@@ -34,11 +34,6 @@ public class CustomAdapter extends ArrayAdapter<Item> {
         this.resource = resource;//this is the item row resource, design for each row.
     }
 
-
-
-
-
-
     /*
     getView() method. This view is called when a listItem needs to be created and
     populated with the data.In this method first the View is inflated using the
@@ -59,24 +54,13 @@ public class CustomAdapter extends ArrayAdapter<Item> {
         if (item != null) {
             ImageView imageView = view.findViewById(R.id.imageItem);
             TextView textViewDescription = view.findViewById(R.id.textviewDesc);
-
-
             imageView.setImageResource(item.getResid());
             textViewDescription.setText(item.getDescription());
-
-
-
-
-
         }
-
-
         return view;
-
     }
 
-
-    public void filterList(ArrayList<Item> filteredList){
+    public void filterList(ArrayList<Item> filteredList) {
         objects = filteredList;
         notifyDataSetChanged();
     }

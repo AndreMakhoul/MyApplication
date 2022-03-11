@@ -26,12 +26,14 @@ public class MusicService extends Service {
         //mediaPlayer.setLooping(true);// set the music file to loop.
         mediaPlayer.setVolume(100, 100);
     }
+
     // when service is started.
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mediaPlayer.start();//starts the music.
         return super.onStartCommand(intent, flags, startId);
     }
+
     // when the service is destroyed to stop playing the music.
     @Override
     public void onDestroy() {

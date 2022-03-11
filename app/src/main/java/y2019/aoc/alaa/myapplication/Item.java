@@ -9,9 +9,11 @@ public class Item {
         this.description = description;
         this.resid = resid;
     }
-    public Item(){
+
+    public Item() {
 
     }
+
     public String getDescription() {
         return description;
     }
@@ -19,7 +21,6 @@ public class Item {
     public int getResid() {
         return resid;
     }
-
 
 
     public void setDescription(String description) {

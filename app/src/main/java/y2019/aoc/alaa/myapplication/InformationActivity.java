@@ -39,17 +39,13 @@ public class InformationActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
-    private DatabaseReference myRef ;//getReference returns a root/message.
+    private DatabaseReference myRef;//getReference returns a root/message.
     private String type1;
     private String category1;
 
     private FirebaseUser user;
     private DatabaseReference reference;
     Car c;
-
-
-
-
 
 
     @Override
@@ -127,9 +123,9 @@ public class InformationActivity extends AppCompatActivity {
                                         String n = u.getLabel();
                                         String m = u.getMoney();
                                         int money = Integer.parseInt(m);
-                                        int num= Integer.parseInt(n);
-                                        u.setLabel((num+1)+"");
-                                        u.setMoney((money-c.getPrice())+"");
+                                        int num = Integer.parseInt(n);
+                                        u.setLabel((num + 1) + "");
+                                        u.setMoney((money - c.getPrice()) + "");
                                         reference.child(uid).setValue(u);
                                     }
                                 }
@@ -139,7 +135,8 @@ public class InformationActivity extends AppCompatActivity {
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-                        });                    }
+                        });
+                    }
 
                 });
 

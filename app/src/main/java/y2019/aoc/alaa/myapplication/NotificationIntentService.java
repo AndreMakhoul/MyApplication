@@ -24,6 +24,7 @@ import java.util.Random;
 public class NotificationIntentService extends IntentService {
     //this is the channel id for notification uses.
     private static final int NOTIFICATION_ID = 3;
+
     public NotificationIntentService() {
         super("NotificationIntentService");
     }

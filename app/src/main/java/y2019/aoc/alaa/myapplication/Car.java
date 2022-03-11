@@ -49,9 +49,6 @@ public class Car implements Serializable {
         this.price = price;
     }
 
-
-
-
     public int getImage() {
         return image;
     }

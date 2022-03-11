@@ -31,16 +31,14 @@ import java.util.Calendar;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "FIREBASE";
-    private Button submitButton,buttonSignIn;
-    private EditText  etEmail,etPassWord,etFullName,etPhoneNumber;
+    private Button submitButton, buttonSignIn;
+    private EditText etEmail, etPassWord, etFullName, etPhoneNumber;
     private DatePickerDialog.OnDateSetListener mOnDateSetListener;
     private FirebaseAuth mAuth;
-    private FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
 
 
-    private ImageView suSmallLogoImage;
-    private TextView suRentoGo,suSloganName,tvDateOfBirth;
+    private TextView suRentoGo, suSloganName, tvDateOfBirth;
 
 
     @Override
@@ -53,28 +51,26 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
 
             Pair[] pairs = new Pair[6];
-            pairs[0] = new Pair<View,String>(suRentoGo,"logo_text");
-            pairs[1] = new Pair<View,String>(suSloganName,"logo_desc");
-            pairs[2] = new Pair<View,String>(etEmail,"email_tran");
-            pairs[3] = new Pair<View,String>(etPassWord,"password_tran");
-            pairs[4] = new Pair<View,String>(submitButton,"button_tran");
-            pairs[5] = new Pair<View,String>(buttonSignIn,"login_signup_tran");
+            pairs[0] = new Pair<View, String>(suRentoGo, "logo_text");
+            pairs[1] = new Pair<View, String>(suSloganName, "logo_desc");
+            pairs[2] = new Pair<View, String>(etEmail, "email_tran");
+            pairs[3] = new Pair<View, String>(etPassWord, "password_tran");
+            pairs[4] = new Pair<View, String>(submitButton, "button_tran");
+            pairs[5] = new Pair<View, String>(buttonSignIn, "login_signup_tran");
 
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUpActivity.this,pairs);
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUpActivity.this, pairs);
             startActivity(intent, options.toBundle());//to bundle carry the animation.
-        } );
+        });
 
 
-
-        suRentoGo=findViewById(R.id.suRentoGo);
-        suSloganName=findViewById(R.id.suSloganName);
-        suSmallLogoImage=findViewById(R.id.suSmallLogoImage);
+        suRentoGo = findViewById(R.id.suRentoGo);
+        suSloganName = findViewById(R.id.suSloganName);
         //Initialize Firebase Auth.
         mAuth = FirebaseAuth.getInstance();//gets the instance of the firebase connected to the project.
         etEmail = findViewById(R.id.etEmail);
         etPassWord = findViewById(R.id.etPassWord);
-        etPhoneNumber=findViewById(R.id.etPhoneNumber);
-        etFullName=findViewById(R.id.etFullName);
+        etPhoneNumber = findViewById(R.id.etPhoneNumber);
+        etFullName = findViewById(R.id.etFullName);
         submitButton = findViewById(R.id.submitButton);
         submitButton.setOnClickListener(this);
 
@@ -99,8 +95,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         mOnDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                int d= ((int)month+1);
-                String date =    day + "/" + d + "/" + year;
+                int d = ((int) month + 1);
+                String date = day + "/" + d + "/" + year;
                 tvDateOfBirth.setText(date);
             }
         };
@@ -108,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    public void signup(String email, String password){
+    public void signup(String email, String password) {
 
         mAuth.createUserWithEmailAndPassword(email, password)//instance of the firebase.
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -122,9 +118,9 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             FirebaseUser user = mAuth.getCurrentUser();
                             DatabaseReference myRef;
                             User u1 = new User(etFullName.getText().toString(), email, password, etPhoneNumber.getText().toString());
-                            myRef = database.getReference("user/"+ user.getUid());
+                            myRef = database.getReference("user/" + user.getUid());
                             myRef.setValue(u1);
-                            Intent i = new Intent(SignUpActivity.this,ArrayListActivity.class);
+                            Intent i = new Intent(SignUpActivity.this, ArrayListActivity.class);
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -137,13 +133,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 });
     }
-    public void ToMain(View view)
-    {
-        Intent intent = new Intent (SignUpActivity.this,MainActivity.class);
-                startActivity(intent);
+
+    public void ToMain(View view) {
+        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        startActivity(intent);
     }
+
     @Override
     public void onClick(View view) {
-        signup(etEmail.getText().toString(), etPassWord.getText().toString() );
+        signup(etEmail.getText().toString(), etPassWord.getText().toString());
     }
 }

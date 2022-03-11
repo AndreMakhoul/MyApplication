@@ -55,7 +55,6 @@ public class AboutUsActivity extends AppCompatActivity implements DialogInterfac
     public void moveToMain(View view) {
         Intent intent = new Intent(this, AnimationActivity.class);
         startActivity(intent);
-
     }
 
 

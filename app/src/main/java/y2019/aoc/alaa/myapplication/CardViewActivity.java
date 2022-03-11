@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardViewActivity extends AppCompatActivity  {
+public class CardViewActivity extends AppCompatActivity {
 
     private List<String> titels;
     private List<Integer> img;
@@ -33,7 +33,6 @@ public class CardViewActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view);
-
 
 
         String UID = mFirebaseAuth.getUid();
@@ -59,8 +58,7 @@ public class CardViewActivity extends AppCompatActivity  {
 
         }
 
-        if(category.equals("BMW"))
-        {
+        if (category.equals("BMW")) {
             img.add(R.drawable.bmw1series);
             img.add(R.drawable.bmwx6);
             img.add(R.drawable.bmwx7);
@@ -71,6 +69,7 @@ public class CardViewActivity extends AppCompatActivity  {
             titels.add("X7");
             titels.add("2 Series");
         }
+
         adapter = new MyAdapter(this, titels, img, category);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -78,27 +77,14 @@ public class CardViewActivity extends AppCompatActivity  {
         recyclerView.setAdapter(adapter);
 
 
-
-
-        Car c1 = new Car("Audi","A3",2020, 2000,R.drawable.audia3,4,false);
-        Car c2 = new Car("Audi","A6",2022, 4000,R.drawable.audia6,4,true);
-        Car c3 = new Car("Audi","Q5",2021, 5000,R.drawable.audiq5,4,true);
-        Car c4 = new Car("Audi","Q7",2018, 5500,R.drawable.audiq7,4,false);
+        Car c1 = new Car("Audi", "A3", 2020, 2000, R.drawable.audia3, 4, false);
+        Car c2 = new Car("Audi", "A6", 2022, 4000, R.drawable.audia6, 4, true);
+        Car c3 = new Car("Audi", "Q5", 2021, 5000, R.drawable.audiq5, 4, true);
+        Car c4 = new Car("Audi", "Q7", 2018, 5500, R.drawable.audiq7, 4, false);
 //        myRef.setValue("A3");
 //       myRef = database.getReference("Cars/" + category + "/List/Q7");//getReference returns a root/message.
 //        myRef.setValue(c4);
-
-//        if (category.equals("Audi")) {
-//            cvname1.setText("A3");
-//            cvname2.setText("A6");
-//            cvname3.setText("Q5");
-//            cvname4.setText("Q7");
-//        }
-
-
-
     }
-
 
     public void toArrayList(View view) {
         Intent intent = new Intent(this, ArrayListActivity.class);

@@ -1,10 +1,5 @@
 package y2019.aoc.alaa.myapplication;
 
-
-import com.google.firebase.database.IgnoreExtraProperties;
-
-import java.util.PrimitiveIterator;
-
 public class User {
     private String name;
     private String email;
@@ -15,7 +10,6 @@ public class User {
 
     public User() {
     }
-
 
     public User(String name, String email, String password, String phoneNumber) {
         this.name = name;
@@ -33,7 +27,6 @@ public class User {
     public void setMoney(String money) {
         this.money = money;
     }
-
 
     public String getLabel() {
         return label;
