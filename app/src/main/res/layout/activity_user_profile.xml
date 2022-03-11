@@ -34,8 +34,8 @@
                 android:fontFamily="@font/bungee"
                 android:includeFontPadding="false"
                 android:text="RentoGo"
-                android:textStyle="bold"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,8 +63,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="#fece2f"
-                app:cardElevation="10dp"
-                >
+                app:cardElevation="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -145,74 +144,74 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full Name"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:hint="Full Name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/profileFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:drawableLeft="@drawable/custom_face_icon"
-                    android:background="@color/white"
                     android:drawablePadding="10dp"
-                    android:editable="false"/>
+                    android:editable="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:hint="Email">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/profileEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:drawableLeft="@drawable/custom_email_icon"
-                    android:background="@color/white"
                     android:drawablePadding="10dp"
-                    android:editable="false"/>
+                    android:editable="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:hint="Password">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/profilePassword"
-                    android:drawableLeft="@drawable/custom_lock_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/white"
+                    android:drawableLeft="@drawable/custom_lock_icon"
                     android:drawablePadding="10dp"
-                    android:editable="false"/>
+                    android:editable="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="TellPhone Number"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:hint="TellPhone Number">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/profileNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/profileNumber"
-                    android:drawableLeft="@drawable/custom_contact_phone"
                     android:background="@color/white"
+                    android:drawableLeft="@drawable/custom_contact_phone"
                     android:drawablePadding="10dp"
-                    android:editable="false"/>
+                    android:editable="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -232,8 +231,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#fece2f"
                 android:fontFamily="@font/bungee"
-                android:onClick="Picture"
-                android:text="Profile Picture" />
+                android:onClick="Report"
+                android:text="Report An Accident" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

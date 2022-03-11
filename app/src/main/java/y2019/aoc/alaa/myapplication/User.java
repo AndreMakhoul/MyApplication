@@ -1,6 +1,8 @@
 package y2019.aoc.alaa.myapplication;
 
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import java.util.PrimitiveIterator;
 
 public class User {
@@ -8,36 +10,36 @@ public class User {
     private String email;
     private String password;
     private String phoneNumber;
-    private int label;
-    private int money;
+    private String label;
+    private String money;
 
     public User() {
     }
 
 
-    public User(String name, String email, String password, String phoneNumber){
+    public User(String name, String email, String password, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.label = 0;
-        this.money = 1000000;
+        this.label = "0";
+        this.money = "1000000";
     }
 
-    public int getMoney() {
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(String money) {
         this.money = money;
     }
 
 
-    public int getLabel() {
+    public String getLabel() {
         return label;
     }
 
-    public void setLabel(int label) {
+    public void setLabel(String label) {
         this.label = label;
     }
 

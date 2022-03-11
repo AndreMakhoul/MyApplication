@@ -38,7 +38,7 @@ public class NotificationIntentService extends IntentService {
         noBuilder.setSmallIcon(R.drawable.ic_baseline_directions_car_24);
         //this intent will be pending until the user clicks on the notification
         //and will activate the activity specified in the intent
-        Intent noInetnt1 = new Intent(this, InformationActivity.class);
+        Intent noInetnt1 = new Intent(this, UserProfile.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 2, noInetnt1, PendingIntent.FLAG_UPDATE_CURRENT);
         noBuilder.setContentIntent(pendingIntent);
         Notification notification = noBuilder.build();

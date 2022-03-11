@@ -67,11 +67,11 @@ public class UserProfile extends AppCompatActivity {
         profileEmail.setText((user.getEmail()));
         profilePassword.setText((user.getPassword()));
         profileNumber.setText((user.getPhoneNumber()));
-        booking_label.setText((user.getLabel() + ""));
+        booking_label.setText((user.getLabel() +""));
         payment_label.setText(user.getMoney()+"$");
     }
 
-    public void Picture(View view) {
+    public void Report(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }

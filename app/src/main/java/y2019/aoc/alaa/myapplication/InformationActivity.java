@@ -39,9 +39,14 @@ public class InformationActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
-    private DatabaseReference myRef;
+    private DatabaseReference myRef ;//getReference returns a root/message.
     private String type1;
     private String category1;
+
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    Car c;
+
 
 
 
@@ -62,9 +67,10 @@ public class InformationActivity extends AppCompatActivity {
         category1 = getIntent().getStringExtra("category");
         type1 = getIntent().getStringExtra("type");
 
+        user = mFirebaseAuth.getCurrentUser();
+        String uid = user.getUid();
 
-        DatabaseReference myRef;//getReference returns a root/message.
-
+        reference = database.getReference("user/");
 
         myRef = database.getReference("Cars/" + category1 + "/List");
 
@@ -74,7 +80,7 @@ public class InformationActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    Car c = dataSnapshot.getValue(Car.class);
+                    c = dataSnapshot.getValue(Car.class);
                     if (type1.equals(c.getType())) {
                         type.setText(c.getType());
                         category.setText(c.getDescription());
@@ -111,9 +117,29 @@ public class InformationActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                    if (user.getUid().equals(dataSnapshot.getKey())) {
+                                        User u = dataSnapshot.getValue(User.class);
 
+                                        String n = u.getLabel();
+                                        String m = u.getMoney();
+                                        int money = Integer.parseInt(m);
+                                        int num= Integer.parseInt(n);
+                                        u.setLabel((num+1)+"");
+                                        u.setMoney((money-c.getPrice())+"");
+                                        reference.child(uid).setValue(u);
+                                    }
+                                }
+                            }
 
-                    }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });                    }
 
                 });
 
