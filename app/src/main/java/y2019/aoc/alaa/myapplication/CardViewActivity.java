@@ -80,10 +80,10 @@ public class CardViewActivity extends AppCompatActivity  {
 
 
 
-        Car c1 = new Car("Audi","A3",2020, 20000,2,R.drawable.audia3,2,false);
-        Car c2 = new Car("Audi","A6",2022, 40000,4,R.drawable.audia6,4,true);
-        Car c3 = new Car("Audi","Q5",2021, 50000,2,R.drawable.audiq5,4,true);
-        Car c4 = new Car("Audi","Q7",2018, 55000,4,R.drawable.audiq7,2,false);
+        Car c1 = new Car("Audi","A3",2020, 2000,R.drawable.audia3,4,false);
+        Car c2 = new Car("Audi","A6",2022, 4000,R.drawable.audia6,4,true);
+        Car c3 = new Car("Audi","Q5",2021, 5000,R.drawable.audiq5,4,true);
+        Car c4 = new Car("Audi","Q7",2018, 5500,R.drawable.audiq7,4,false);
 //        myRef.setValue("A3");
 //       myRef = database.getReference("Cars/" + category + "/List/Q7");//getReference returns a root/message.
 //        myRef.setValue(c4);

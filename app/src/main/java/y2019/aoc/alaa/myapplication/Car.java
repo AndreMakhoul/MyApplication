@@ -9,19 +9,17 @@ public class Car implements Serializable {
     private String type;
     private int year;
     private int price;
-    private int left;
     private int image; //resid
     private int noOfSeats;//
     private Boolean isElectric;
 
     public Car() { }
 
-    public Car(String description, String type, int year, int price, int left, int image, int noOfSeats, Boolean isElectric) {
+    public Car(String description, String type, int year, int price, int image, int noOfSeats, Boolean isElectric) {
         this.description = description;
         this.type = type;
         this.year = year;
         this.price = price;
-        this.left = left;
         this.image = image;
         this.noOfSeats = noOfSeats;
         this.isElectric = isElectric;
@@ -51,13 +49,8 @@ public class Car implements Serializable {
         this.price = price;
     }
 
-    public int getLeft() {
-        return left;
-    }
 
-    public void setLeft(int left) {
-        this.left = left;
-    }
+
 
     public int getImage() {
         return image;

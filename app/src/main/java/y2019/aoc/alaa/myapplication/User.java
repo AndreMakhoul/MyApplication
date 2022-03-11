@@ -1,6 +1,7 @@
 package y2019.aoc.alaa.myapplication;
 
-import java.util.ArrayList;
+
+import java.util.PrimitiveIterator;
 
 public class User {
     private String name;
@@ -8,35 +9,27 @@ public class User {
     private String password;
     private String phoneNumber;
     private int label;
-    private String Key;
-    private ArrayList<Car> cars;
+    private int money;
 
     public User() {
     }
 
-    public User(String name, String email, String password, String phoneNumber, int label) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.label = label;
-    }
 
-    public User(String name, String email, String password, String phoneNumber, String key) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.Key = key;
-        this.label = 0;
-
-    }
-    public User(String name, String email, String password, String phoneNumber) {
+    public User(String name, String email, String password, String phoneNumber){
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.label = 0;
+        this.money = 1000000;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
 
@@ -46,14 +39,6 @@ public class User {
 
     public void setLabel(int label) {
         this.label = label;
-    }
-
-    public String getKey() {
-        return Key;
-    }
-
-    public void setKey(String key) {
-        Key = key;
     }
 
     public String getName() {
@@ -86,15 +71,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-
-    public ArrayList<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(ArrayList<Car> cars) {
-        this.cars = cars;
     }
 
 

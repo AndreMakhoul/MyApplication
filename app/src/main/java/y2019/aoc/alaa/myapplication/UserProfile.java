@@ -19,35 +19,37 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class UserProfile extends AppCompatActivity {
-    private TextView profileEmail, profilePassword, profileFullName, profileNumber ,booking_label;
+    private TextView profileEmail, profilePassword, profileFullName, profileNumber, booking_label, payment_label;
     private ImageView profile_image;
     private Button reportbtn;
     private DatabaseReference userRef;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
-    private static final String USER = "user";
-    private FirebaseUser user = mAuth.getCurrentUser();
+    private FirebaseUser user;
+    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        reportbtn = findViewById(R.id.reportbtn);
         profileEmail = findViewById(R.id.profileEmail);
         profilePassword = findViewById(R.id.profilePassword);
         profileFullName = findViewById(R.id.profileFullName);
         profileNumber = findViewById(R.id.profileNumber);
         profile_image = findViewById(R.id.profile_image);
-        booking_label=findViewById(R.id.booking_label);
+        booking_label = findViewById(R.id.booking_label);
+        payment_label = findViewById(R.id.payment_label);
         database = FirebaseDatabase.getInstance();
-        userRef = database.getReference(USER);
-        DatabaseReference myRef = database.getReference("user/" + user.getUid());
+        user = mAuth.getCurrentUser();
+        myRef = database.getReference("user/");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User u = dataSnapshot.getValue(User.class);
-                    updateUserData(new User(u.getName(), u.getEmail(), u.getPassword(), u.getPhoneNumber(),u.getLabel()));
+                    if (user.getUid().equals(dataSnapshot.getKey())) {
+                        User u = dataSnapshot.getValue(User.class);
+                        updateUserData(u);
+                    }
                 }
             }
 
@@ -65,10 +67,11 @@ public class UserProfile extends AppCompatActivity {
         profileEmail.setText((user.getEmail()));
         profilePassword.setText((user.getPassword()));
         profileNumber.setText((user.getPhoneNumber()));
-        booking_label.setText(user.getLabel()+"");
+        booking_label.setText((user.getLabel() + ""));
+        payment_label.setText(user.getMoney()+"$");
     }
 
-    public void Report(View view) {
+    public void Picture(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }

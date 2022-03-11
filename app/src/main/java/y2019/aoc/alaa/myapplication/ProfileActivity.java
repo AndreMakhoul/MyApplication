@@ -9,10 +9,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -23,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     //attributes
     private Button buttonCamera, buttonGallery;
     private ImageView imageViewProfile;
-
+//    private String pic;
     //for picture of camera, A bitmap is a type of memory organization or image file format used to store digital images.
     //The term bitmap comes from the computer programming terminology, meaning just a map of bits,
     //a spatially mapped array of bits.
@@ -54,6 +56,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+//    public void bitMapToString(Bitmap bitmap){
+//        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+//        byte [] arr=baos.toByteArray();
+//        pic= Base64.encodeToString(arr, Base64.DEFAULT);
+//    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -63,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 //the image captured is saved in the data object
                 picture = (Bitmap) data.getExtras().get("data");
                 //set image captured to be the new image
+//                bitMapToString(picture);
                 imageViewProfile.setImageBitmap(picture);
             }
         }else{

@@ -88,10 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnLongClickL
 
     public void login(View view) {
         Intent intent = new Intent(this, ArrayListActivity.class);
-        String pass = password.getText().toString();
-        String upperCaseChars = "(.*[A-Z].*)";
-        String lowerCaseChars = "(.*[a-z].*)";
-
         if (!email.getText().toString().equals("") && email.getText().toString().contains("@") && email.getText().toString().contains(".")) {
             //saving email and password of user in a local file for future use
             //create sp file

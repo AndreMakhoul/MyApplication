@@ -33,7 +33,6 @@ public class InformationActivity extends AppCompatActivity {
 
     private static final int NOTIFICATION_REMINDER_NIGHT = 1;
     private Button verifyBtn;
-    private String myText;
     private TextView category, type, year, price, electric, numofseats;
     private ImageView img;
     //Get instance of Authentication Project In FB console
@@ -43,6 +42,7 @@ public class InformationActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private String type1;
     private String category1;
+
 
 
 
@@ -68,34 +68,30 @@ public class InformationActivity extends AppCompatActivity {
 
         myRef = database.getReference("Cars/" + category1 + "/List");
 
-        Toast.makeText(InformationActivity.this, category1 + ": " + type1, Toast.LENGTH_LONG).show();
-         myRef.addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 for( DataSnapshot dataSnapshot: snapshot.getChildren())
-                 {
+//        Toast.makeText(InformationActivity.this, category1 + ": " + type1, Toast.LENGTH_LONG).show();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                     Car c = dataSnapshot.getValue(Car.class);
-                     if(type1.equals(c.getType())) {
-                         type.setText(c.getType());
-                         category.setText(c.getDescription());
-                         year.setText(c.getYear()+"");
-                         price.setText(c.getPrice()+"$");
-                         electric.setText(c.isElectric()+"");
-                         numofseats.setText(c.getNoOfSeats()+"");
-                         img.setBackgroundResource(c.getImage());
-                     }
-                     }
-             }
+                    Car c = dataSnapshot.getValue(Car.class);
+                    if (type1.equals(c.getType())) {
+                        type.setText(c.getType());
+                        category.setText(c.getDescription());
+                        year.setText(c.getYear() + "");
+                        price.setText(c.getPrice() + "$");
+                        electric.setText(c.isElectric() + "");
+                        numofseats.setText(c.getNoOfSeats() + "");
+                        img.setBackgroundResource(c.getImage());
+                    }
+                }
+            }
 
-             @Override
-             public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-             }
-         });
-
-
-
+            }
+        });
 
 
         Intent notifyIntent = new Intent(this, NotificationReceiver.class);
@@ -115,7 +111,8 @@ public class InformationActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
-                        myText = ver.getText().toString();
+
+
                     }
 
                 });
