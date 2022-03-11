@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class AnimationActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 4000;//4 SECONDS
+    private static int SPLASH_SCREEN = 2000;//2 SECONDS
     //variable
     Animation topAnim,middleAnim, bottomAnim;
     ImageView logoimagie;
