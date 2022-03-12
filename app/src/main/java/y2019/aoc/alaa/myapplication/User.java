@@ -17,7 +17,7 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.label = "0";
-        this.money = "1000000";
+        this.money = "10000";
     }
 
     public String getMoney() {

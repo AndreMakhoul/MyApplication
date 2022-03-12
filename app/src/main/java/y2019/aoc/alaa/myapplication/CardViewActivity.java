@@ -77,13 +77,19 @@ public class CardViewActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
 
-        Car c1 = new Car("Audi", "A3", 2020, 2000, R.drawable.audia3, 4, false);
-        Car c2 = new Car("Audi", "A6", 2022, 4000, R.drawable.audia6, 4, true);
-        Car c3 = new Car("Audi", "Q5", 2021, 5000, R.drawable.audiq5, 4, true);
-        Car c4 = new Car("Audi", "Q7", 2018, 5500, R.drawable.audiq7, 4, false);
+        Car c1 = new Car("Audi", "A3", 2020, 350, R.drawable.audia3, 5, false);
+        Car c2 = new Car("Audi", "A6", 2022, 700, R.drawable.audia6, 5, true);
+        Car c3 = new Car("Audi", "Q5", 2021, 1100, R.drawable.audiq5, 5, true);
+        Car c4 = new Car("Audi", "Q7", 2018, 1600, R.drawable.audiq7, 5, false);
+        Car b1 = new Car("BMW", "1 Series", 2018, 150, R.drawable.bmw1series, 5, false);
+        Car b2 = new Car("BMW", "X6", 2022, 900, R.drawable.bmwx6, 5, true);
+        Car b3 = new Car("BMW", "X7", 2021, 1100, R.drawable.bmwx7, 5, false);
+        Car b4 = new Car("BMW", "2 Series", 2022, 1500, R.drawable.bmw2series, 5, false);
+
+
 //        myRef.setValue("A3");
-//       myRef = database.getReference("Cars/" + category + "/List/Q7");//getReference returns a root/message.
-//        myRef.setValue(c4);
+//        myRef = database.getReference("Cars/" + category + "/List/2 Series");//getReference returns a root/message.
+//        myRef.setValue(b4);
     }
 
     public void toArrayList(View view) {
