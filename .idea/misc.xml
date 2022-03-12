@@ -50,6 +50,8 @@
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_baseline_unselected_red_eye_24.xml" value="0.125" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_email_focused.xml" value="0.125" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/font/bangers.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/activity_about_us.xml" value="0.1" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/activity_animation.xml" value="0.1" />
@@ -68,6 +70,8 @@
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/fragment_car_info.xml" value="0.14492753623188406" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/layout/view_item.xml" value="0.14628623188405798" />
         <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/menu/menu.xml" value="0.1" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/mipmap-anydpi-v26/ic_channel.xml" value="0.1" />
+        <entry key="..\:/Users/97250/OneDrive/Desktop/MyApplication2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

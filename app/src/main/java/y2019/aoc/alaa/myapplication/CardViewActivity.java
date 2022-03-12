@@ -89,7 +89,6 @@ public class CardViewActivity extends AppCompatActivity {
         Car b4 = new Car("BMW", "2 Series", 2022, 1500, R.drawable.bmw2series, 5, false);
 
 
-//        myRef.setValue("A3");
 //        myRef = database.getReference("Cars/" + category + "/List/2 Series");//getReference returns a root/message.
 //        myRef.setValue(b4);
     }
