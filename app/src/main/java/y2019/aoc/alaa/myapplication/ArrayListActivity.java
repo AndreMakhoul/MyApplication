@@ -9,12 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,13 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
 
 public class ArrayListActivity extends AppCompatActivity {
 
@@ -150,16 +140,11 @@ public class ArrayListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) // switch checks the id then go to the case that related to it
         {
-            case R.id.camera:
-                Toast.makeText(ArrayListActivity.this, "Camera", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ArrayListActivity.this, ProfileActivity.class);
-                startActivity(intent);
-                break;
             case R.id.exit:
                 this.finishAffinity();
                 break;
             case R.id.profile:
-                Intent intent1 = new Intent(ArrayListActivity.this, UserProfile.class);
+                Intent intent1 = new Intent(ArrayListActivity.this, UserProfileActivity.class);
                 startActivity(intent1);
 
                 break;//close application.

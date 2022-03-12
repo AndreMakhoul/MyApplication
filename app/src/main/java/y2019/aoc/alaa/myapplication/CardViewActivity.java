@@ -86,11 +86,11 @@ public class CardViewActivity extends AppCompatActivity {
         Car b1 = new Car("BMW", "1 Series", 2018, 150, R.drawable.bmw1series, 5, false);
         Car b2 = new Car("BMW", "X6", 2022, 900, R.drawable.bmwx6, 5, true);
         Car b3 = new Car("BMW", "X7", 2021, 1100, R.drawable.bmwx7, 5, false);
-        Car b4 = new Car("BMW", "2 Series", 2022, 1500, R.drawable.bmw2series, 5, false);
+        Car b4 = new Car("BMW", "2 Series", 2022, 1500, R.drawable.bmw2series, 4, false);
 
 
-//        myRef = database.getReference("Cars/" + category + "/List/2 Series");//getReference returns a root/message.
-//        myRef.setValue(b4);
+//       myRef = database.getReference("Cars/" + category + "/List/2 Series");//getReference returns a root/message.
+//       myRef.setValue(b4);
     }
 
     public void toArrayList(View view) {
