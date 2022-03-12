@@ -70,7 +70,6 @@ public class InformationActivity extends AppCompatActivity {
 
         myRef = database.getReference("Cars/" + category1 + "/List");
 
-//        Toast.makeText(InformationActivity.this, category1 + ": " + type1, Toast.LENGTH_LONG).show();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

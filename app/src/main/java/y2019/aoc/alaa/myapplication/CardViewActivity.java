@@ -43,6 +43,8 @@ public class CardViewActivity extends AppCompatActivity {
         titels = new ArrayList<>();
         img = new ArrayList<>();
 
+
+
         if (category.equals("Audi")) {
 
 
