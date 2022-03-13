@@ -46,6 +46,7 @@ public class InformationActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
     Car c;
+    String money;
 
 
     @Override
@@ -62,13 +63,17 @@ public class InformationActivity extends AppCompatActivity {
         verifyBtn = findViewById(R.id.verifybtn);
         category1 = getIntent().getStringExtra("category");
         type1 = getIntent().getStringExtra("type");
-
         user = mFirebaseAuth.getCurrentUser();
         String uid = user.getUid();
 
         reference = database.getReference("user/");
 
         myRef = database.getReference("Cars/" + category1 + "/List");
+
+        Intent notifyIntent = new Intent(this, NotificationReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast
+                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -81,11 +86,63 @@ public class InformationActivity extends AppCompatActivity {
                         category.setText(c.getDescription());
                         year.setText(c.getYear() + "");
                         price.setText(c.getPrice() + "$");
+                        money=c.getPrice()+"";
                         electric.setText(c.isElectric() + "");
                         numofseats.setText(c.getNoOfSeats() + "");
                         img.setBackgroundResource(c.getImage());
                     }
                 }
+
+                verifyBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        AlertDialog.Builder myDialog = new AlertDialog.Builder(InformationActivity.this);
+                        myDialog.setTitle("Are you Sure You Want To Rent The Car!");
+
+                        final EditText ver = new EditText(InformationActivity.this);
+                        myDialog.setPositiveButton("verify", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
+                                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                            if (user.getUid().equals(dataSnapshot.getKey())) {
+                                                User u = dataSnapshot.getValue(User.class);
+                                                String n = u.getLabel();
+                                                String m = u.getMoney();
+                                                int total = Integer.parseInt(m);
+                                                int num = Integer.parseInt(n);
+                                                u.setLabel((num + 1) + "");
+                                                u.setMoney((total - Integer.parseInt(money))+"");
+                                                reference.child(uid).setValue(u);
+
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+
+                        });
+
+                        myDialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+
+                        myDialog.show();
+                    }
+                });
             }
 
             @Override
@@ -95,60 +152,7 @@ public class InformationActivity extends AppCompatActivity {
         });
 
 
-        Intent notifyIntent = new Intent(this, NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast
-                (this, NOTIFICATION_REMINDER_NIGHT, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        verifyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                AlertDialog.Builder myDialog = new AlertDialog.Builder(InformationActivity.this);
-                myDialog.setTitle("Are you Sure You Want To Rent The Car!");
-
-                final EditText ver = new EditText(InformationActivity.this);
-                myDialog.setPositiveButton("verify", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        alarmManager.set(AlarmManager.RTC_WAKEUP, 100, pendingIntent);
-                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                    if (user.getUid().equals(dataSnapshot.getKey())) {
-                                        User u = dataSnapshot.getValue(User.class);
-
-                                        String n = u.getLabel();
-                                        String m = u.getMoney();
-                                        int money = Integer.parseInt(m);
-                                        int num = Integer.parseInt(n);
-                                        u.setLabel((num + 1) + "");
-                                        u.setMoney((money - c.getPrice()) + "");
-                                        reference.child(uid).setValue(u);
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-                    }
-
-                });
-
-                myDialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-
-                myDialog.show();
-            }
-        });
 
 
     }

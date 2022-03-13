@@ -1,6 +1,5 @@
 package y2019.aoc.alaa.myapplication;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,11 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +43,7 @@ public class CardViewActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleview);
         titels = new ArrayList<>();
         img = new ArrayList<>();
-
-
         if (category.equals("Audi")) {
-
-
             img.add(R.drawable.audia3);
             img.add(R.drawable.audia6);
             img.add(R.drawable.audiq5);
@@ -61,7 +53,6 @@ public class CardViewActivity extends AppCompatActivity {
             titels.add("A6");
             titels.add("Q5");
             titels.add("Q7");
-
         }
 
         if (category.equals("BMW")) {
@@ -96,21 +87,6 @@ public class CardViewActivity extends AppCompatActivity {
 //       myRef = database.getReference("Cars/" + category + "/List/2 Series");//getReference returns a root/message.
 //       myRef.setValue(b4);
 
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    c = dataSnapshot.getValue(Car.class);
-//                    titels.add(c.getType());
-//                    img.add(c.getImage());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
 
     }
 
