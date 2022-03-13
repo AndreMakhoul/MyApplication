@@ -19,19 +19,38 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 //takes the data and TenPlate and put it on view.
 public class CustomAdapter extends ArrayAdapter<Item> {
     private Context context;//view what i want to show on screen.
     private int resource;// id for xml how will the info will be ordered.
+
     private List<Item> objects;
+    private ArrayList<Item> arrayList;
+
+
+    public int getCount() {
+        return objects.size();
+    }
+
+    public Item getItem(int position) {
+        return objects.get(position);
+    }
+
+    public long getItemId(int position) {
+        return position;
+    }
 
 
     public CustomAdapter(@NonNull Context context, int resource, @NonNull List<Item> objects) {
         super(context, resource, objects);
-        this.objects = objects;
         this.context = context;
         this.resource = resource;//this is the item row resource, design for each row.
+
+        this.objects = objects;
+        this.arrayList = new ArrayList<>();
+        this.arrayList.addAll(objects);
     }
 
     /*
@@ -60,8 +79,17 @@ public class CustomAdapter extends ArrayAdapter<Item> {
         return view;
     }
 
-    public void filterList(ArrayList<Item> filteredList) {
-        objects = filteredList;
+    public void filter(String s) {
+        s = s.toLowerCase(Locale.getDefault());
+        objects.clear();
+        if (s.length() == 0)
+            objects.addAll(arrayList);
+        else {
+            for (Item item : arrayList) {
+                if (item.getDescription().toLowerCase(Locale.getDefault()).contains(s))
+                objects.add(item);
+            }
+        }
         notifyDataSetChanged();
     }
 }

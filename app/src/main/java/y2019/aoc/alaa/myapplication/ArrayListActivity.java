@@ -34,8 +34,6 @@ public class ArrayListActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
-    private ArrayList<Item> backup;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +42,9 @@ public class ArrayListActivity extends AppCompatActivity {
         Toast.makeText(this, "UID:" + UID, Toast.LENGTH_LONG).show();
 
 
-        DatabaseReference myRef = database.getReference("Cars/");//getReference returns a root/message.
-//        // adds an item to the firebase under the referenced specified
-//
+        DatabaseReference myRef = database.getReference("Cars/Categories");//getReference returns a root/message.
+          // adds an item to the firebase under the referenced specified
+
 //        myRef.push().setValue(new Item("Audi", R.drawable.audilogo));
 //        myRef.push().setValue(new Item("BMW", R.drawable.bmwlogo));
 //        myRef.push().setValue(new Item("Ferrari", R.drawable.ferrarilogo));
@@ -55,7 +53,7 @@ public class ArrayListActivity extends AppCompatActivity {
 //        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));
 
 
-//
+
 //        list.add(new Item("Audi", R.drawable.audilogo));
 //        list.add(new Item("BMW", R.drawable.bmwlogo));
 //        list.add(new Item("Ferrari", R.drawable.ferrarilogo));
@@ -66,11 +64,7 @@ public class ArrayListActivity extends AppCompatActivity {
         list = new ArrayList<>();
         //reference to the list view so it can programed
         myListView = findViewById(R.id.myListView);
-        // connect adapter with Data
-        myAdapter = new CustomAdapter(this, R.layout.car_row, list);
 
-        //connect adapter with view
-        myListView.setAdapter(myAdapter);
 
         Intent intent = new Intent(this, CardViewActivity.class);
 
@@ -99,7 +93,11 @@ public class ArrayListActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Item i = dataSnapshot.getValue(Item.class);
                     list.add(i);
-                    myAdapter.notifyDataSetChanged();
+                    // connect adapter with Data
+                    myAdapter = new CustomAdapter(getApplicationContext(), R.layout.car_row, list);
+                    //connect adapter with view
+                    myListView.setAdapter(myAdapter);
+
                 }
             }
 
@@ -116,23 +114,21 @@ public class ArrayListActivity extends AppCompatActivity {
         MenuItem menuItem = menu.findItem(R.id.search_bar);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Type here to search");
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String s)//when user type.
-            {
+            public boolean onQueryTextSubmit(String s) {
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String s)//when the user change or type more.
-            {
-                filter(s);
-                Toast.makeText(ArrayListActivity.this, s, Toast.LENGTH_LONG).show();
+            public boolean onQueryTextChange(String s) {
+                myAdapter.filter(s);
                 return false;
             }
         });
-        return super.onCreateOptionsMenu(menu);
+
+
+        return true;
     }
 
 
@@ -154,16 +150,6 @@ public class ArrayListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void filter(String s) {
-        ArrayList<Item> filtered = new ArrayList<>();
-        for (Item item : list) {
-            if (s != null && item.getDescription() != null) {
-                if (item.getDescription().contains(s)) {
-                    filtered.add(item);
-                }
-            }
-        }
-        myAdapter.filterList(filtered);
-    }
+
 
 }
