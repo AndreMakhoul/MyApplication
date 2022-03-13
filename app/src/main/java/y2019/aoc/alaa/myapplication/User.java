@@ -7,6 +7,7 @@ public class User {
     private String phoneNumber;
     private String label;
     private String money;
+    private String image;
 
     public User() {
     }
@@ -68,5 +69,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getImage() { return image; }
 
+    public void setImage(String image) { this.image = image;}
 }
