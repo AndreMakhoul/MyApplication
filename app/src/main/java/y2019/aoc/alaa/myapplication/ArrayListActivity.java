@@ -33,6 +33,7 @@ public class ArrayListActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     //Gets the root of the Real Time Database in the FB console
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class ArrayListActivity extends AppCompatActivity {
 
 
         DatabaseReference myRef = database.getReference("Cars/Categories");//getReference returns a root/message.
-          // adds an item to the firebase under the referenced specified
+        // adds an item to the firebase under the referenced specified
 
 //        myRef.push().setValue(new Item("Audi", R.drawable.audilogo));
 //        myRef.push().setValue(new Item("BMW", R.drawable.bmwlogo));
@@ -50,14 +51,6 @@ public class ArrayListActivity extends AppCompatActivity {
 //        myRef.push().setValue(new Item("Tesla", R.drawable.teslalogo));
 //        myRef.push().setValue(new Item("Volkswagen", R.drawable.volkswagen));
 
-
-
-//        list.add(new Item("Audi", R.drawable.audilogo));
-//        list.add(new Item("BMW", R.drawable.bmwlogo));
-//        list.add(new Item("Ferrari", R.drawable.ferrarilogo));
-//        list.add(new Item("Jeep", R.drawable.jeeplogo));
-//        list.add(new Item("Tesla", R.drawable.teslalogo));
-//        list.add(new Item("Volkswagen", R.drawable.volkswagen));
 
         list = new ArrayList<>();
         //reference to the list view so it can programed
@@ -91,7 +84,7 @@ public class ArrayListActivity extends AppCompatActivity {
                     Item i = dataSnapshot.getValue(Item.class);
                     list.add(i);
                     // connect adapter with Data
-                    myAdapter = new CustomAdapter(getApplicationContext(), R.layout.car_row, list);
+                    myAdapter = new CustomAdapter(ArrayListActivity.this, R.layout.car_row, list);
                     //connect adapter with view
                     myListView.setAdapter(myAdapter);
 
@@ -146,7 +139,6 @@ public class ArrayListActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
