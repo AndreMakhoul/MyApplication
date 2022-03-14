@@ -126,6 +126,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     //ContentResolver is something we use to be able to reach ContentProvider as a client/user in order to connect with provider.
                     picture = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
                     imageViewProfile.setImageBitmap(picture);
+                    saveImage(picture);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
