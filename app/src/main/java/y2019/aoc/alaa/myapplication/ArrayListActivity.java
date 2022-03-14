@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -39,7 +38,6 @@ public class ArrayListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_array_list);
         String UID = mFirebaseAuth.getUid();
-        Toast.makeText(this, "UID:" + UID, Toast.LENGTH_LONG).show();
 
 
         DatabaseReference myRef = database.getReference("Cars/Categories");//getReference returns a root/message.
@@ -74,7 +72,6 @@ public class ArrayListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 intent.putExtra("category", list.get(i).getDescription());
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Item: " + myRef, Toast.LENGTH_LONG).show();
             }
         });
         myListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
