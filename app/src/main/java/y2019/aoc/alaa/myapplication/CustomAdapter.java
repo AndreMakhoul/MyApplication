@@ -25,17 +25,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
     private ArrayList<Item> arrayList;
 
 
-    public int getCount() {
-        return objects.size();
-    }
 
-    public Item getItem(int position) {
-        return objects.get(position);
-    }
-
-    public long getItemId(int position) {
-        return position;
-    }
 
 
     public CustomAdapter(@NonNull Context context, int resource, @NonNull List<Item> objects) {

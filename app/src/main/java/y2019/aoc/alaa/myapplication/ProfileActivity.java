@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     if (user.getUid().equals(dataSnapshot.getKey())) {
                         u = dataSnapshot.getValue(User.class);
                         ubdateUserData(u);
@@ -135,24 +135,24 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
-    public void saveImage(Bitmap bitmap){
-        DatabaseReference myRef1 = database.getReference("user/"+user.getUid());
+    public void saveImage(Bitmap bitmap) {
+        DatabaseReference myRef1 = database.getReference("user/" + user.getUid());
         ByteArrayOutputStream boas = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, boas);
-        byte [] arr = boas.toByteArray();
-        image = Base64.encodeToString(arr,Base64.DEFAULT);
+        byte[] arr = boas.toByteArray();
+        image = Base64.encodeToString(arr, Base64.DEFAULT);
         myRef1.child("image").setValue(image);
         //save to FB
     }
-    public Bitmap StringToBitMap(String image){
-        try{
-            byte [] encodeByte= Base64.decode(image,Base64.DEFAULT);
 
-            InputStream inputStream  = new ByteArrayInputStream(encodeByte);
-            Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
+    public Bitmap StringToBitMap(String image) {
+        try {
+            byte[] encodeByte = Base64.decode(image, Base64.DEFAULT);
+
+            InputStream inputStream = new ByteArrayInputStream(encodeByte);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             return bitmap;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.getMessage();
             return null;
         }
