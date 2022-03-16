@@ -25,14 +25,10 @@ public class CustomAdapter extends ArrayAdapter<Item> {
     private ArrayList<Item> arrayList;
 
 
-
-
-
     public CustomAdapter(@NonNull Context context, int resource, @NonNull List<Item> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;//this is the item row resource, design for each row.
-
         this.objects = objects;
         this.arrayList = new ArrayList<>();
         this.arrayList.addAll(objects);
@@ -52,7 +48,6 @@ public class CustomAdapter extends ArrayAdapter<Item> {
 
         if (view == null)//to make sure it wont crash.
             view = LayoutInflater.from(context).inflate(resource, parent, false);
-
         Item item = getItem(position);//starts at first place 0. method from android studio not related to Item object.
 
         if (item != null) {
@@ -72,7 +67,7 @@ public class CustomAdapter extends ArrayAdapter<Item> {
         else {
             for (Item item : arrayList) {
                 if (item.getDescription().toLowerCase(Locale.getDefault()).contains(s))
-                objects.add(item);
+                    objects.add(item);
             }
         }
         notifyDataSetChanged();
