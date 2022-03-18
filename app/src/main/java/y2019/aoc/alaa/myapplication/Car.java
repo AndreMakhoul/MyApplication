@@ -9,8 +9,8 @@ public class Car implements Serializable {
     private String type;
     private int year;
     private int price;
-    private int image; //resid
-    private int noOfSeats;//
+    private int image;
+    private int noOfSeats;
     private Boolean isElectric;
 
     public Car() { }

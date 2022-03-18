@@ -45,8 +45,7 @@ public class NotificationIntentService extends IntentService {
         managerCompat.notify(NOTIFICATION_ID, notification);
 
         NotificationManager mNotificationManager;
-        mNotificationManager =
-                (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         //this is required for SDK version 26 and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "Your_channel_id";

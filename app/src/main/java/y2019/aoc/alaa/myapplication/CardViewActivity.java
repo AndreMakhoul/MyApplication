@@ -18,7 +18,7 @@ import java.util.List;
 
 public class CardViewActivity extends AppCompatActivity {
 
-    private List<String> titels;
+    private List<String> titles;
     private List<Integer> img;
     private MyAdapter adapter;
     private RecyclerView recyclerView;
@@ -28,7 +28,7 @@ public class CardViewActivity extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance("https://andre-2e345-default-rtdb.europe-west1.firebasedatabase.app/");
     private DatabaseReference myRef;
     private String category;
-    Car c;
+    private Car c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +38,10 @@ public class CardViewActivity extends AppCompatActivity {
 
         String UID = mFirebaseAuth.getUid();
         category = getIntent().getStringExtra("category");
-        DatabaseReference myRef = database.getReference("Cars/" + category + "/List");//getReference returns a root/message.
+        myRef = database.getReference("Cars/" + category + "/List");//getReference returns a root/message.
 
         recyclerView = findViewById(R.id.recycleview);
-        titels = new ArrayList<>();
+        titles = new ArrayList<>();
         img = new ArrayList<>();
         if (category.equals("Audi")) {
             img.add(R.drawable.audia3);
@@ -49,10 +49,10 @@ public class CardViewActivity extends AppCompatActivity {
             img.add(R.drawable.audiq5);
             img.add(R.drawable.audiq7);
 
-            titels.add("A3");
-            titels.add("A6");
-            titels.add("Q5");
-            titels.add("Q7");
+            titles.add("A3");
+            titles.add("A6");
+            titles.add("Q5");
+            titles.add("Q7");
         }
 
         if (category.equals("BMW")) {
@@ -61,13 +61,13 @@ public class CardViewActivity extends AppCompatActivity {
             img.add(R.drawable.bmwx7);
             img.add(R.drawable.bmw2series);
 
-            titels.add("1 Series");
-            titels.add("X6");
-            titels.add("X7");
-            titels.add("2 Series");
+            titles.add("1 Series");
+            titles.add("X6");
+            titles.add("X7");
+            titles.add("2 Series");
         }
 
-        adapter = new MyAdapter(this, titels, img, category);
+        adapter = new MyAdapter(this, titles, img, category);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);

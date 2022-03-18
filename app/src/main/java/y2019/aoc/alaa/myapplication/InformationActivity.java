@@ -45,8 +45,9 @@ public class InformationActivity extends AppCompatActivity {
 
     private FirebaseUser user;
     private DatabaseReference reference;
-    Car c;
-    String money;
+
+    private Car c;
+    private String money; //car price
 
 
     @Override
@@ -86,13 +87,12 @@ public class InformationActivity extends AppCompatActivity {
                         category.setText(c.getDescription());
                         year.setText(c.getYear() + "");
                         price.setText(c.getPrice() + "$");
-                        money=c.getPrice()+"";
+                        money = c.getPrice() + "";
                         electric.setText(c.isElectric() + "");
                         numofseats.setText(c.getNoOfSeats() + "");
                         img.setBackgroundResource(c.getImage());
                     }
                 }
-
                 verifyBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -117,7 +117,7 @@ public class InformationActivity extends AppCompatActivity {
                                                 int total = Integer.parseInt(m);
                                                 int num = Integer.parseInt(n);
                                                 u.setLabel((num + 1) + "");
-                                                u.setMoney((total - Integer.parseInt(money))+"");
+                                                u.setMoney((total - Integer.parseInt(money)) + "");
                                                 reference.child(uid).setValue(u);
 
                                             }
@@ -150,9 +150,6 @@ public class InformationActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }
