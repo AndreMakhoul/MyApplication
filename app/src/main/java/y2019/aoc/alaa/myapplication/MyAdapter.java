@@ -25,8 +25,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.titles = titles;
         this.images = images;
         this.cate = cate;
-
-
     }
 
 
