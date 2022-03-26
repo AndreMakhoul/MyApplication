@@ -27,11 +27,9 @@ public class NotificationIntentService extends IntentService {
         super("NotificationIntentService");
     }
 
-
     @Override
     protected void onHandleIntent(Intent intent) {
         Notification.Builder noBuilder = new Notification.Builder(this);
-        //todo need to change the notification title.
         noBuilder.setContentTitle("RentoGo"); //notification title
         noBuilder.setContentText("Your Rent Is Successful");
         noBuilder.setSmallIcon(R.drawable.ic_baseline_directions_car_24);
