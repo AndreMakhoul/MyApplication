@@ -101,7 +101,7 @@ public class InformationActivity extends AppCompatActivity {
                         myDialog.setTitle("Are you Sure You Want To Rent The Car!");
 
                         final EditText ver = new EditText(InformationActivity.this);
-                        myDialog.setPositiveButton("verify", new DialogInterface.OnClickListener() {
+                        myDialog.setPositiveButton("Sure", new DialogInterface.OnClickListener() {
 
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -133,7 +133,7 @@ public class InformationActivity extends AppCompatActivity {
 
                         });
 
-                        myDialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        myDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
